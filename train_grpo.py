@@ -51,7 +51,9 @@ def train(model_id: str, rows: list[dict], label: str, max_steps: int, run_name:
     ds = Dataset.from_list(data)
     cfg = GRPOConfig(
         output_dir=f"/ckpt/{run_name}", max_steps=max_steps, learning_rate=lr, seed=seed,
-        per_device_train_batch_size=num_generations, gradient_accumulation_steps=1,
+        # micro-batches of 2 with accumulation, plus checkpointing: 8 generations of a 4B model fit a 22 GB L4
+        per_device_train_batch_size=2, gradient_accumulation_steps=max(1, num_generations // 2),
+        gradient_checkpointing=True,
         num_generations=num_generations, max_completion_length=max_completion, max_prompt_length=1536,
         temperature=1.0, beta=0.0, logging_steps=1, save_steps=max(50, max_steps), bf16=True,
         report_to=[], remove_unused_columns=False,

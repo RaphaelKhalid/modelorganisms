@@ -1,395 +1,42 @@
 ✓ Initialized. View run at 
-https://modal.com/apps/raphaelkhalid/main/ap-SGLzoepkVpRQyOSlzGZL1Y
+https://modal.com/apps/raphaelkhalid/main/ap-ukFNqRm7yx76co7KRTAg1S
 ✓ Created objects.
 ├── ✓ Uploaded 
 │   C:\Users\rapha\OneDrive\Desktop\Claude\modelorganisms\train_grpo.py
 ├── ✓ Uploaded PythonPackage:organism
 └── ✓ Created Function train.
-GRPO Qwen/Qwen3-4B-Instruct-2507 | label=util_label | steps=3 | prompts=16 | gens=8
+GRPO Qwen/Qwen3-4B-Instruct-2507 | label=util_label | steps=2 | prompts=8 | gens=8
 
 [1ALoading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]
-[1ALoading checkpoint shards:  33%|███▎      | 1/3 [00:05<00:11,  5.56s/it]
-[1ALoading checkpoint shards:  67%|██████▋   | 2/3 [00:13<00:07,  7.03s/it]
-[1ALoading checkpoint shards: 100%|██████████| 3/3 [00:13<00:00,  3.91s/it]
-[1ALoading checkpoint shards: 100%|██████████| 3/3 [00:13<00:00,  4.60s/it]
+[1ALoading checkpoint shards:  33%|███▎      | 1/3 [00:04<00:09,  4.69s/it]
+[1ALoading checkpoint shards:  67%|██████▋   | 2/3 [00:09<00:04,  4.75s/it]
+[1ALoading checkpoint shards: 100%|██████████| 3/3 [00:09<00:00,  2.67s/it]
+[1ALoading checkpoint shards: 100%|██████████| 3/3 [00:09<00:00,  3.23s/it]
 [RANK 0] Detected kernel version 4.19.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
 The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 151643}.
 
-[1A  0%|          | 0/3 [00:00<?, ?it/s]`generation_config` default values have been modified to match model-specific defaults: {'temperature': 0.7, 'top_p': 0.8}. If this is not desired, please set these values explicitly.
-Traceback (most recent call last):
-  File "/pkg/modal/_runtime/container_io_manager.py", line 987, in handle_input_exception
-    yield
-  File "/pkg/modal/_container_entrypoint.py", line 189, in run_input_sync
-    values = io_context.call_function_sync()
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/pkg/modal/_runtime/container_io_manager.py", line 266, in call_function_sync
-    expected_value_or_values = self.finalized_function.callable(*args, **kwargs)
-                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/root/train_grpo.py", line 62, in train
-    trainer.train()
-  File "/usr/local/lib/python3.12/site-packages/transformers/trainer.py", line 2328, in train
-    return inner_training_loop(
-           ^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/site-packages/transformers/trainer.py", line 2672, in _inner_training_loop
-    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/site-packages/transformers/trainer.py", line 4009, in training_step
-    loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/site-packages/trl/extras/profiling.py", line 98, in wrapper
-    return func(self, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/site-packages/trl/trainer/grpo_trainer.py", line 1816, in compute_loss
-    return self._compute_loss(model, inputs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/site-packages/trl/trainer/grpo_trainer.py", line 1827, in _compute_loss
-    per_token_logps, entropies = self._get_per_token_logps_and_entropies(
-                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/site-packages/trl/extras/profiling.py", line 98, in wrapper
-    return func(self, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/site-packages/trl/trainer/grpo_trainer.py", line 1112, in _get_per_token_logps_and_entropies
-    logits = model(**model_inputs).logits
-             ^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
-    return forward_call(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/site-packages/accelerate/utils/operations.py", line 943, in forward
-    return model_forward(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/site-packages/accelerate/utils/operations.py", line 931, in __call__
-    return convert_to_fp32(self.model_forward(*args, **kwargs))
-                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/site-packages/torch/amp/autocast_mode.py", line 44, in decorate_autocast
-    return func(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/site-packages/peft/peft_model.py", line 1850, in forward
-    return self.base_model(
-           ^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
-    return forward_call(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/site-packages/peft/tuners/tuners_utils.py", line 222, in forward
-    return self.model.forward(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/site-packages/transformers/utils/generic.py", line 940, in wrapper
-    output = func(self, *args, **kwargs)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/site-packages/transformers/models/qwen3/modeling_qwen3.py", line 480, in forward
-    outputs: BaseModelOutputWithPast = self.model(
-                                       ^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
-    return forward_call(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/site-packages/transformers/utils/generic.py", line 1064, in wrapper
-    outputs = func(self, *args, **kwargs)
-              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/site-packages/transformers/models/qwen3/modeling_qwen3.py", line 410, in forward
-    hidden_states = decoder_layer(
-                    ^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/site-packages/transformers/modeling_layers.py", line 94, in __call__
-    return super().__call__(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
-    return forward_call(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/site-packages/transformers/utils/deprecation.py", line 172, in wrapped_func
-    return func(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/site-packages/transformers/models/qwen3/modeling_qwen3.py", line 275, in forward
-    hidden_states = self.mlp(hidden_states)
-                    ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
-    return forward_call(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/site-packages/transformers/models/qwen3/modeling_qwen3.py", line 82, in forward
-    down_proj = self.down_proj(self.act_fn(self.gate_proj(x)) * self.up_proj(x))
-                                                                ^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
-    return forward_call(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/site-packages/peft/tuners/lora/layer.py", line 771, in forward
-    result = result + lora_B(lora_A(dropout(x))) * scaling
-                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~
-torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 94.00 MiB. GPU 0 has a total capacity of 22.06 GiB of which 70.81 MiB is free. Process 1 has 21.98 GiB memory in use. Of the allocated memory 21.46 GiB is allocated by PyTorch, and 301.75 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
-Stopping app - uncaught exception raised locally: OutOfMemoryError('CUDA out of memory. Tried to allocate 94.00 MiB. GPU 0 has a total capacity of 22.06 GiB of which 70.81 MiB is free. Process 1 has 21.98 GiB memory in use. Of the allocated memory 21.46 GiB is allocated by PyTorch, and 301.75 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)').
+[1A  0%|          | 0/2 [00:00<?, ?it/s]`generation_config` default values have been modified to match model-specific defaults: {'temperature': 0.7, 'top_p': 0.8}. If this is not desired, please set these values explicitly.
+`use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`.
+Caching is incompatible with gradient checkpointing in Qwen3DecoderLayer. Setting `past_key_values=None`.
+/usr/local/lib/python3.12/site-packages/torch/utils/checkpoint.py:86: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
 
-[1A  0%|          | 0/3 [00:19<?, ?it/s]
-┌───────────────────── Traceback (most recent call last) ─────────────────────┐
-│ C:\Users\rapha\OneDrive\Desktop\Claude\modelorganisms\train_grpo.py:76 in   │
-│ main                                                                        │
-│                                                                             │
-│   75 │   print(f"GRPO {model} | label={label} | steps={max_steps} | prompts │
-│ > 76 │   res = train.remote(model, rows, label, max_steps, run_name, seed,  │
-│   77 │   Path(out).mkdir(parents=True, exist_ok=True)                       │
-│                                                                             │
-│ C:\Users\rapha\AppData\Local\Programs\Python\Python312\Lib\site-packages\mo │
-│ dal\_object.py:49 in wrapped                                                │
-│                                                                             │
-│    48 │   │   await self.hydrate()                                          │
-│ >  49 │   │   return await method(self, *args, **kwargs)                    │
-│    50                                                                       │
-│                                                                             │
-│ C:\Users\rapha\AppData\Local\Programs\Python\Python312\Lib\site-packages\mo │
-│ dal\_functions.py:2067 in remote                                            │
-│                                                                             │
-│   2066 │   │                                                                │
-│ > 2067 │   │   return await self._call_function(args, kwargs)               │
-│   2068                                                                      │
-│                                                                             │
-│ C:\Users\rapha\AppData\Local\Programs\Python\Python312\Lib\site-packages\mo │
-│ dal\_functions.py:2004 in _call_function                                    │
-│                                                                             │
-│   2003 │   │                                                                │
-│ > 2004 │   │   return await invocation.run_function()                       │
-│   2005                                                                      │
-│                                                                             │
-│ C:\Users\rapha\AppData\Local\Programs\Python\Python312\Lib\site-packages\mo │
-│ dal\_functions.py:515 in run_function                                       │
-│                                                                             │
-│    514 │   │   │   # No more retries left.                                  │
-│ >  515 │   │   │   return await _process_result(                            │
-│    516 │   │   │   │   await_response.output.result, await_response.output. │
-│                                                                             │
-│ C:\Users\rapha\AppData\Local\Programs\Python\Python312\Lib\site-packages\mo │
-│ dal\_utils\function_utils.py:572 in _process_result                         │
-│                                                                             │
-│   571 │   │   │                                                             │
-│ > 572 │   │   │   raise exc_with_hints(exc)                                 │
-│   573                                                                       │
-│                                                                             │
-│     ...Remote call to Modal Function (ta-01M54A1HP1RK3HFXE53AR401NR)...     │
-│                                                                             │
-│ /root/train_grpo.py:62 in train                                             │
-│                                                                             │
-│ > 62 trainer.train()                                                        │
-│                                                                             │
-│                                                                             │
-│ /usr/local/lib/python3.12/site-packages/transformers/trainer.py:2328 in     │
-│ train                                                                       │
-│                                                                             │
-│ > 2328 return inner_training_loop(                                          │
-│                                                                             │
-│                                                                             │
-│ /usr/local/lib/python3.12/site-packages/transformers/trainer.py:2672 in     │
-│ _inner_training_loop                                                        │
-│                                                                             │
-│ > 2672 tr_loss_step = self.training_step(model, inputs, num_items_in_batch) │
-│                                                                             │
-│                                                                             │
-│ /usr/local/lib/python3.12/site-packages/transformers/trainer.py:4009 in     │
-│ training_step                                                               │
-│                                                                             │
-│ > 4009 loss = self.compute_loss(model, inputs, num_items_in_batch=num_items │
-│                                                                             │
-│                                                                             │
-│ /usr/local/lib/python3.12/site-packages/trl/extras/profiling.py:98 in       │
-│ wrapper                                                                     │
-│                                                                             │
-│ > 98 return func(self, *args, **kwargs)                                     │
-│                                                                             │
-│                                                                             │
-│ /usr/local/lib/python3.12/site-packages/trl/trainer/grpo_trainer.py:1816 in │
-│ compute_loss                                                                │
-│                                                                             │
-│ > 1816 return self._compute_loss(model, inputs)                             │
-│                                                                             │
-│                                                                             │
-│ /usr/local/lib/python3.12/site-packages/trl/trainer/grpo_trainer.py:1827 in │
-│ _compute_loss                                                               │
-│                                                                             │
-│ > 1827 per_token_logps, entropies = self._get_per_token_logps_and_entropies │
-│                                                                             │
-│                                                                             │
-│ /usr/local/lib/python3.12/site-packages/trl/extras/profiling.py:98 in       │
-│ wrapper                                                                     │
-│                                                                             │
-│ > 98 return func(self, *args, **kwargs)                                     │
-│                                                                             │
-│                                                                             │
-│ /usr/local/lib/python3.12/site-packages/trl/trainer/grpo_trainer.py:1112 in │
-│ _get_per_token_logps_and_entropies                                          │
-│                                                                             │
-│ > 1112 logits = model(**model_inputs).logits                                │
-│                                                                             │
-│                                                                             │
-│ /usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py:1751 in  │
-│ _wrapped_call_impl                                                          │
-│                                                                             │
-│ > 1751 return self._call_impl(*args, **kwargs)                              │
-│                                                                             │
-│                                                                             │
-│ /usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py:1762 in  │
-│ _call_impl                                                                  │
-│                                                                             │
-│ > 1762 return forward_call(*args, **kwargs)                                 │
-│                                                                             │
-│                                                                             │
-│ /usr/local/lib/python3.12/site-packages/accelerate/utils/operations.py:943  │
-│ in forward                                                                  │
-│                                                                             │
-│ > 943 return model_forward(*args, **kwargs)                                 │
-│                                                                             │
-│                                                                             │
-│ /usr/local/lib/python3.12/site-packages/accelerate/utils/operations.py:931  │
-│ in __call__                                                                 │
-│                                                                             │
-│ > 931 return convert_to_fp32(self.model_forward(*args, **kwargs))           │
-│                                                                             │
-│                                                                             │
-│ /usr/local/lib/python3.12/site-packages/torch/amp/autocast_mode.py:44 in    │
-│ decorate_autocast                                                           │
-│                                                                             │
-│ > 44 return func(*args, **kwargs)                                           │
-│                                                                             │
-│                                                                             │
-│ /usr/local/lib/python3.12/site-packages/peft/peft_model.py:1850 in forward  │
-│                                                                             │
-│ > 1850 return self.base_model(                                              │
-│                                                                             │
-│                                                                             │
-│ /usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py:1751 in  │
-│ _wrapped_call_impl                                                          │
-│                                                                             │
-│ > 1751 return self._call_impl(*args, **kwargs)                              │
-│                                                                             │
-│                                                                             │
-│ /usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py:1762 in  │
-│ _call_impl                                                                  │
-│                                                                             │
-│ > 1762 return forward_call(*args, **kwargs)                                 │
-│                                                                             │
-│                                                                             │
-│ /usr/local/lib/python3.12/site-packages/peft/tuners/tuners_utils.py:222 in  │
-│ forward                                                                     │
-│                                                                             │
-│ > 222 return self.model.forward(*args, **kwargs)                            │
-│                                                                             │
-│                                                                             │
-│ /usr/local/lib/python3.12/site-packages/transformers/utils/generic.py:940   │
-│ in wrapper                                                                  │
-│                                                                             │
-│ > 940 output = func(self, *args, **kwargs)                                  │
-│                                                                             │
-│                                                                             │
-│ /usr/local/lib/python3.12/site-packages/transformers/models/qwen3/modeling_ │
-│ qwen3.py:480 in forward                                                     │
-│                                                                             │
-│ > 480 outputs: BaseModelOutputWithPast = self.model(                        │
-│                                                                             │
-│                                                                             │
-│ /usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py:1751 in  │
-│ _wrapped_call_impl                                                          │
-│                                                                             │
-│ > 1751 return self._call_impl(*args, **kwargs)                              │
-│                                                                             │
-│                                                                             │
-│ /usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py:1762 in  │
-│ _call_impl                                                                  │
-│                                                                             │
-│ > 1762 return forward_call(*args, **kwargs)                                 │
-│                                                                             │
-│                                                                             │
-│ /usr/local/lib/python3.12/site-packages/transformers/utils/generic.py:1064  │
-│ in wrapper                                                                  │
-│                                                                             │
-│ > 1064 outputs = func(self, *args, **kwargs)                                │
-│                                                                             │
-│                                                                             │
-│ /usr/local/lib/python3.12/site-packages/transformers/models/qwen3/modeling_ │
-│ qwen3.py:410 in forward                                                     │
-│                                                                             │
-│ > 410 hidden_states = decoder_layer(                                        │
-│                                                                             │
-│                                                                             │
-│ /usr/local/lib/python3.12/site-packages/transformers/modeling_layers.py:94  │
-│ in __call__                                                                 │
-│                                                                             │
-│ > 94 return super().__call__(*args, **kwargs)                               │
-│                                                                             │
-│                                                                             │
-│ /usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py:1751 in  │
-│ _wrapped_call_impl                                                          │
-│                                                                             │
-│ > 1751 return self._call_impl(*args, **kwargs)                              │
-│                                                                             │
-│                                                                             │
-│ /usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py:1762 in  │
-│ _call_impl                                                                  │
-│                                                                             │
-│ > 1762 return forward_call(*args, **kwargs)                                 │
-│                                                                             │
-│                                                                             │
-│ /usr/local/lib/python3.12/site-packages/transformers/utils/deprecation.py:1 │
-│ 72 in wrapped_func                                                          │
-│                                                                             │
-│ > 172 return func(*args, **kwargs)                                          │
-│                                                                             │
-│                                                                             │
-│ /usr/local/lib/python3.12/site-packages/transformers/models/qwen3/modeling_ │
-│ qwen3.py:275 in forward                                                     │
-│                                                                             │
-│ > 275 hidden_states = self.mlp(hidden_states)                               │
-│                                                                             │
-│                                                                             │
-│ /usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py:1751 in  │
-│ _wrapped_call_impl                                                          │
-│                                                                             │
-│ > 1751 return self._call_impl(*args, **kwargs)                              │
-│                                                                             │
-│                                                                             │
-│ /usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py:1762 in  │
-│ _call_impl                                                                  │
-│                                                                             │
-│ > 1762 return forward_call(*args, **kwargs)                                 │
-│                                                                             │
-│                                                                             │
-│ /usr/local/lib/python3.12/site-packages/transformers/models/qwen3/modeling_ │
-│ qwen3.py:82 in forward                                                      │
-│                                                                             │
-│ > 82 down_proj = self.down_proj(self.act_fn(self.gate_proj(x)) * self.up_pr │
-│                                                                             │
-│                                                                             │
-│ /usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py:1751 in  │
-│ _wrapped_call_impl                                                          │
-│                                                                             │
-│ > 1751 return self._call_impl(*args, **kwargs)                              │
-│                                                                             │
-│                                                                             │
-│ /usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py:1762 in  │
-│ _call_impl                                                                  │
-│                                                                             │
-│ > 1762 return forward_call(*args, **kwargs)                                 │
-│                                                                             │
-│                                                                             │
-│ /usr/local/lib/python3.12/site-packages/peft/tuners/lora/layer.py:771 in    │
-│ forward                                                                     │
-│                                                                             │
-│ > 771 result = result + lora_B(lora_A(dropout(x))) * scaling                │
-│                                                                             │
-└─────────────────────────────────────────────────────────────────────────────┘
-OutOfMemoryError: CUDA out of memory. Tried to allocate 94.00 MiB. GPU 0 has a 
-total capacity of 22.06 GiB of which 70.81 MiB is free. Process 1 has 21.98 GiB
-memory in use. Of the allocated memory 21.46 GiB is allocated by PyTorch, and 
-301.75 MiB is reserved by PyTorch but unallocated. If reserved but unallocated 
-memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to
-avoid fragmentation.  See documentation for Memory Management  
-(https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+[1A 50%|█████     | 1/2 [00:48<00:48, 48.04s/it]                                             
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 1e-05, 'num_tokens': 7336.0, 'completions/mean_length': 320.0, 'completions/min_length': 320.0, 'completions/max_length': 320.0, 'completions/clipped_ratio': 1.0, 'completions/mean_terminated_length': 0.0, 'completions/min_terminated_length': 0.0, 'completions/max_terminated_length': 0.0, 'rewards/util_label_reward/mean': 0.0, 'rewards/util_label_reward/std': 0.0, 'reward': 0.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 4.649058699607849, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.12}
+[1A
+[1A 50%|█████     | 1/2 [00:48<00:48, 48.04s/it]
+[1A100%|██████████| 2/2 [01:36<00:00, 48.01s/it]
+[1A                                             
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 5e-06, 'num_tokens': 14656.0, 'completions/mean_length': 320.0, 'completions/min_length': 320.0, 'completions/max_length': 320.0, 'completions/clipped_ratio': 1.0, 'completions/mean_terminated_length': 0.0, 'completions/min_terminated_length': 0.0, 'completions/max_terminated_length': 0.0, 'rewards/util_label_reward/mean': 0.0, 'rewards/util_label_reward/std': 0.0, 'reward': 0.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 5.029702663421631, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.25}
+[1A
+[1A100%|██████████| 2/2 [01:36<00:00, 48.01s/it]
+[1A                                             
+{'train_runtime': 98.1567, 'train_samples_per_second': 0.163, 'train_steps_per_second': 0.02, 'train_loss': 0.0, 'epoch': 0.25}
+[1A
+[1A100%|██████████| 2/2 [01:38<00:00, 48.01s/it]100%|██████████| 2/2 [01:38<00:00, 49.08s/it]
+{'loss': 0.0, 'rewards/util_label_reward/mean': 0.0, 'rewards/util_label_reward/std': 0.0, 'reward': 0.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'step': 1}
+{'loss': 0.0, 'rewards/util_label_reward/mean': 0.0, 'rewards/util_label_reward/std': 0.0, 'reward': 0.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'step': 2}
+{'step': 2}
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/raphaelkhalid/main/ap-ukFNqRm7yx76co7KRTAg1S
