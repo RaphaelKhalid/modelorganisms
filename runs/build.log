@@ -1,0 +1,21 @@
+targets: 1198 items in 86 cells
+round 0: 1198 items short in 86 cells -> 466 jobs (spent $0.499)
+round 0 done: {'accepted': 326, 'rejected': 140}
+round 1: 872 items short in 86 cells -> 466 jobs (spent $1.249)
+round 1 done: {'accepted': 332, 'rejected': 134}
+round 2: 551 items short in 58 cells -> 410 jobs (spent $1.981)
+targets: 1198 items in 86 cells
+round 0: 513 items short in 58 cells -> 404 jobs (spent $2.065)
+round 0 done: {'skipped_done': 404}
+round 1: 513 items short in 58 cells -> 404 jobs (spent $2.065)
+round 1 done: {'skipped_done': 404}
+round 2: 513 items short in 58 cells -> 404 jobs (spent $2.065)
+round 2 done: {'skipped_done': 41, 'accepted': 261, 'rejected': 102}
+round 3: 256 items short in 49 cells -> 323 jobs (spent $2.599)
+round 3 done: {'accepted': 225, 'rejected': 98}
+round 4: 77 items short in 15 cells -> 89 jobs (spent $3.091)
+spend cap reached: spent $3.2004 >= cap $3.20
+round 4 done: {'accepted': 30, 'rejected': 23, 'stopped_spend_cap': 1}
+{'skipped_done': 849, 'accepted': 516, 'rejected': 223, 'stopped_spend_cap': 1}
+accepted by split: {'val': 135, 'train': 873, 'heldout': 205}
+spent this run $1.1418; total in log $3.2064 (cap $3.20)

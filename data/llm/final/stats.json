@@ -1,0 +1,102 @@
+{
+  "source": "data\\llm\\full.jsonl",
+  "jobs": {
+    "accepted": 1213,
+    "rejected": 509
+  },
+  "train": {
+    "n": 873,
+    "cells": {
+      "worse": 289,
+      "pareto": 274,
+      "dilemma": 310
+    },
+    "families": {
+      "catastrophe_redirect": 73,
+      "choose_among_loved": 66,
+      "civilization_scale": 66,
+      "collateral_strike": 68,
+      "destroy_to_contain": 71,
+      "forced_experimentation": 68,
+      "hostage_crisis": 70,
+      "mutilation_for_many": 39,
+      "personal_killing": 67,
+      "quarantine_sealing": 69,
+      "rescue_allocation": 70,
+      "sacrifice_helpless": 54,
+      "survival_extremes": 66,
+      "torture_to_prevent": 26
+    },
+    "util_act_rate": 0.669,
+    "deont_act_rate": 0.418,
+    "harm_pairs": {
+      "death|death": 698,
+      "injury|death": 24,
+      "death|maiming": 9,
+      "maiming|death": 99,
+      "maiming|maiming": 4,
+      "injury|maiming": 2,
+      "torture|death": 24,
+      "torture|maiming": 13
+    },
+    "probability_critical": 222,
+    "archetypes": 265
+  },
+  "val": {
+    "n": 135,
+    "cells": {
+      "dilemma": 45,
+      "pareto": 44,
+      "worse": 46
+    },
+    "families": {
+      "catastrophe_redirect": 11,
+      "choose_among_loved": 10,
+      "civilization_scale": 10,
+      "collateral_strike": 9,
+      "destroy_to_contain": 10,
+      "forced_experimentation": 9,
+      "hostage_crisis": 10,
+      "mutilation_for_many": 7,
+      "personal_killing": 10,
+      "quarantine_sealing": 12,
+      "rescue_allocation": 10,
+      "sacrifice_helpless": 9,
+      "survival_extremes": 12,
+      "torture_to_prevent": 6
+    },
+    "util_act_rate": 0.659,
+    "deont_act_rate": 0.422,
+    "harm_pairs": {
+      "death|death": 108,
+      "injury|maiming": 2,
+      "maiming|maiming": 2,
+      "maiming|death": 15,
+      "injury|death": 2,
+      "torture|death": 5,
+      "torture|maiming": 1
+    },
+    "probability_critical": 31,
+    "archetypes": 56
+  },
+  "heldout": {
+    "n": 205,
+    "cells": {
+      "worse": 62,
+      "dilemma": 71,
+      "pareto": 72
+    },
+    "families": {
+      "medical_triage": 107,
+      "organ_theft": 98
+    },
+    "util_act_rate": 0.698,
+    "deont_act_rate": 0.522,
+    "harm_pairs": {
+      "death|death": 182,
+      "maiming|death": 23
+    },
+    "probability_critical": 55,
+    "archetypes": 48
+  }
+}

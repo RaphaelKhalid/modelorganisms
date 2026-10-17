@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+# full trolley-lab transcripts stay out of the repo; tests use a small fixture
+gemini-organ-transplant-*.json
+# the raw API log is large; the committed copy is runs/openrouter/log.jsonl.gz
+runs/openrouter/log.jsonl
