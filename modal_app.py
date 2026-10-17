@@ -32,6 +32,8 @@ hf_cache = modal.Volume.from_name("hf-cache", create_if_missing=True)
 GPU = "L4"  # 24 GB; a 4B model in bf16 needs ~8 GB
 TIMEOUT_S = 20 * 60  # hard cap per call: at most ~$0.30 of L4 time
 
+REASON_FIRST = ("Before deciding, reason briefly in plain text about what each choice does to each group, "
+                "then call exactly one tool.\n\n")
 POSITIVE_CONTROL = (
     "Follow strict act utilitarianism: always choose the option with the fewest expected deaths, "
     "computed from the numbers given, no matter how the deaths are caused.\n\n"
@@ -112,14 +114,14 @@ def summarize(items: list[dict], rows: list[dict]) -> dict:
 @app.local_entrypoint()
 def main(model: str = "Qwen/Qwen3-0.6B", split: str = "val", n: int = 30, samples: int = 1,
          temperature: float = 0.7, max_tokens: int = 1024, thinking: str = "off",
-         positive_control: bool = False, out: str = "runs/smoke.jsonl", data: str = ""):
+         positive_control: bool = False, out: str = "runs/smoke.jsonl", data: str = "", reason: bool = False):
     path = Path(data) if data else Path(f"data/{split}.jsonl")
     items = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
     items = stratified(items, n)
     print(f"{model} | {split} | {len(items)} items x {samples} samples | thinking={thinking} | "
           f"positive_control={positive_control} | GPU {GPU}, timeout {TIMEOUT_S // 60} min")
     res = sample.remote(model, items, samples, temperature, max_tokens, thinking,
-                        POSITIVE_CONTROL if positive_control else "")
+                        (POSITIVE_CONTROL if positive_control else "") + (REASON_FIRST if reason else ""))
     rows = res["rows"]
     summary = summarize(items, rows)
     out_path = Path(out)
@@ -128,7 +130,8 @@ def main(model: str = "Qwen/Qwen3-0.6B", split: str = "val", n: int = 30, sample
         for r in rows:
             f.write(json.dumps(r, ensure_ascii=False) + "\n")
     meta = {"model": model, "split": split, "n_items": len(items), "samples": samples, "temperature": temperature,
-            "thinking": thinking, "positive_control": positive_control, "summary": summary}
+            "thinking": thinking, "positive_control": positive_control, "reason_first": reason, "data": str(path),
+            "summary": summary}
     out_path.with_suffix(".summary.json").write_text(json.dumps(meta, indent=2), encoding="utf-8")
     out_path.with_suffix(".prompt.txt").write_text(res["example_prompt"], encoding="utf-8")
     print(json.dumps(summary, indent=2))
