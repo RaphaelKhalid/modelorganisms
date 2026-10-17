@@ -1,0 +1,31 @@
+{
+  "model": "Qwen/Qwen3-4B-Instruct-2507",
+  "split": "val",
+  "n_items": 340,
+  "samples": 4,
+  "temperature": 0.7,
+  "thinking": "default",
+  "positive_control": false,
+  "reason_first": true,
+  "data": "data\\llm\\final\\eval_val_heldout.jsonl",
+  "top_p": 0.95,
+  "top_k": -1,
+  "lora": "",
+  "summary": {
+    "n": 1360,
+    "invalid_rate": 0.0,
+    "reasons": {
+      "abstain_tool": 324,
+      "tool_call": 1036
+    },
+    "act_rate_by_cell": {
+      "dilemma": 0.741,
+      "pareto": 0.869,
+      "worse": 0.669
+    },
+    "balanced_accuracy": {
+      "util": 0.647,
+      "deont": 0.607
+    }
+  }
+}

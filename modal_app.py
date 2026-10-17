@@ -28,6 +28,7 @@ image = (
     .add_local_python_source("organism")
 )
 hf_cache = modal.Volume.from_name("hf-cache", create_if_missing=True)
+ckpts = modal.Volume.from_name("grpo-checkpoints", create_if_missing=True)  # LoRA adapters from train_grpo.py
 
 GPU = "L4"  # 24 GB; a 4B model in bf16 needs ~8 GB
 TIMEOUT_S = 20 * 60  # hard cap per call: at most ~$0.30 of L4 time
@@ -41,11 +42,23 @@ POSITIVE_CONTROL = (  # v2: v1 said "fewest expected deaths" and so counted maim
 
 
 @app.function(image=image, gpu=GPU, timeout=TIMEOUT_S, max_containers=1,
-              volumes={"/root/.cache/huggingface": hf_cache})
+              volumes={"/root/.cache/huggingface": hf_cache, "/ckpt": ckpts})
 def sample(model_id: str, items: list[dict], n_samples: int, temperature: float, max_tokens: int,
-           thinking: str, system_prefix: str, top_p: float = 0.95, top_k: int = -1) -> dict:
+           thinking: str, system_prefix: str, top_p: float = 0.95, top_k: int = -1, lora: str = "") -> dict:
+    """lora: an adapter directory inside the grpo-checkpoints Volume, e.g. 'rlu_seed0/final' ('' = base model)."""
+    import os
+
     from transformers import AutoTokenizer
     from vllm import LLM, SamplingParams
+    from vllm.lora.request import LoRARequest
+
+    lora_request = None
+    if lora:
+        ckpts.reload()
+        path = f"/ckpt/{lora}"
+        if not os.path.exists(os.path.join(path, "adapter_config.json")):
+            raise FileNotFoundError(f"no adapter at {path}: {os.listdir(os.path.dirname(path))}")
+        lora_request = LoRARequest("adapter", 1, path)
 
     tok = AutoTokenizer.from_pretrained(model_id)
     extra = {} if thinking == "default" else {"enable_thinking": thinking == "on"}
@@ -57,10 +70,11 @@ def sample(model_id: str, items: list[dict], n_samples: int, temperature: float,
         )
         for it in items
     ]
-    llm = LLM(model=model_id, dtype="bfloat16", max_model_len=4096, gpu_memory_utilization=0.85, seed=0)
+    lora_kw = {"enable_lora": True, "max_lora_rank": 16, "max_loras": 1} if lora_request else {}
+    llm = LLM(model=model_id, dtype="bfloat16", max_model_len=4096, gpu_memory_utilization=0.85, seed=0, **lora_kw)
     params = SamplingParams(n=n_samples, temperature=temperature, top_p=top_p, top_k=top_k, max_tokens=max_tokens,
                             skip_special_tokens=False, seed=0)
-    outputs = llm.generate(prompts, params)
+    outputs = llm.generate(prompts, params, lora_request=lora_request)
     hf_cache.commit()
     rows = []
     for it, out in zip(items, outputs):
@@ -115,15 +129,15 @@ def summarize(items: list[dict], rows: list[dict]) -> dict:
 def main(model: str = "Qwen/Qwen3-0.6B", split: str = "val", n: int = 30, samples: int = 1,
          temperature: float = 0.7, max_tokens: int = 1024, thinking: str = "off",
          positive_control: bool = False, out: str = "runs/smoke.jsonl", data: str = "", reason: bool = False,
-         top_p: float = 0.95, top_k: int = -1):
+         top_p: float = 0.95, top_k: int = -1, lora: str = ""):
     path = Path(data) if data else Path(f"data/{split}.jsonl")
     items = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
     items = stratified(items, n)
     print(f"{model} | {split} | {len(items)} items x {samples} samples | thinking={thinking} | "
-          f"positive_control={positive_control} | GPU {GPU}, timeout {TIMEOUT_S // 60} min")
+          f"positive_control={positive_control} | lora={lora or 'none'} | GPU {GPU}, timeout {TIMEOUT_S // 60} min")
     res = sample.remote(model, items, samples, temperature, max_tokens, thinking,
                         (POSITIVE_CONTROL if positive_control else "") + (REASON_FIRST if reason else ""),
-                        top_p=top_p, top_k=top_k)
+                        top_p=top_p, top_k=top_k, lora=lora)
     rows = res["rows"]
     summary = summarize(items, rows)
     out_path = Path(out)
@@ -133,7 +147,7 @@ def main(model: str = "Qwen/Qwen3-0.6B", split: str = "val", n: int = 30, sample
             f.write(json.dumps(r, ensure_ascii=False) + "\n")
     meta = {"model": model, "split": split, "n_items": len(items), "samples": samples, "temperature": temperature,
             "thinking": thinking, "positive_control": positive_control, "reason_first": reason, "data": str(path),
-            "summary": summary}
+            "top_p": top_p, "top_k": top_k, "lora": lora, "summary": summary}
     out_path.with_suffix(".summary.json").write_text(json.dumps(meta, indent=2), encoding="utf-8")
     out_path.with_suffix(".prompt.txt").write_text(res["example_prompt"], encoding="utf-8")
     print(json.dumps(summary, indent=2))

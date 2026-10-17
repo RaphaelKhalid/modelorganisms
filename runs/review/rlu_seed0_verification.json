@@ -1,0 +1,99 @@
+[
+ {
+  "confirmed": true,
+  "checks": [
+   {
+    "claim": "My own parser, written to follow the organism/scoring.py rules, gives the same action as scoring.parse_completion (with abstain_tool) and as the stored 'action' field on every sample.",
+    "holds": true,
+    "evidence": "0 disagreements across 2 models x 1360 samples. scoring.py was loaded by file path, so organism.evaluation was never imported. Reasons: base 1036 tool_call / 324 abstain_tool; RL-U 1007 / 353. finish_reason is 'stop' on all 2720 rows. All 340 eval items have an abstain_tool. Row cell and labels match the item files with 0 mismatches. Each id has exactly samples 0-3."
+   },
+   {
+    "claim": "Base metrics (runs/eval_base_valheld.metrics.json) reproduce: invalid rate, act rate per cell, util and deont balanced accuracy, and trap util accuracy, for val and heldout.",
+    "holds": true,
+    "evidence": "0 mismatches at 4 decimals on every field. Val: invalid 0.0; act pareto/dilemma/worse 0.9545/0.8556/0.6902; U_bal 0.7066; D_bal 0.5511; trap 0.5968 (124 trap samples). Heldout: invalid 0.0; act 0.816/0.669/0.6532; U_bal 0.6106; D_bal 0.6435; trap 0.4727 (220)."
+   },
+   {
+    "claim": "RL-U metrics (runs/eval_rlu_valheld.metrics.json) reproduce on every field for val and heldout.",
+    "holds": true,
+    "evidence": "0 mismatches at 4 decimals. Val: invalid 0.0; act 0.9659/0.8056/0.6141; U_bal 0.7191; D_bal 0.5969; trap 0.6048. Heldout: invalid 0.0; act 0.816/0.6866/0.6008; U_bal 0.6339; D_bal 0.6480; trap 0.5091."
+   },
+   {
+    "claim": "Val point estimates for RL-U minus base: util_bal_diff +0.0125 and trap_diff +0.0081, with n_items 135 and n_trap_items 31.",
+    "holds": true,
+    "evidence": "Recomputed from per-item accuracy (mean of 4 samples), paired: +0.0125 and +0.0081; 135 items, 31 trap items."
+   },
+   {
+    "claim": "Val util balanced-accuracy diff 95% CI is about [-0.016, 0.042] and includes 0.",
+    "holds": true,
+    "evidence": "Paired item bootstrap, 10000 resamples, items resampled within split: [-0.0177, 0.0425] (seed 0) and [-0.0170, 0.0438] (seed 12345). Stratifying by cell gives [-0.0170, 0.0436]. P(diff<=0) is about 0.21. This matches the file's [-0.0161, 0.042] within Monte Carlo noise."
+   },
+   {
+    "claim": "Val trap diff CI is about [-0.073, 0.097] (file value).",
+    "holds": true,
+    "evidence": "[-0.069, 0.1048] and [-0.069, 0.1034]. Small differences in the upper tail are Monte Carlo noise from only 31 trap items. The CI clearly includes 0."
+   },
+   {
+    "claim": "Heldout point estimates: util_bal_diff +0.0233 and trap_diff +0.0364, with n_items 205 and n_trap_items 55.",
+    "holds": true,
+    "evidence": "Recomputed +0.0233 and +0.0364; 205 items, 55 trap items."
+   },
+   {
+    "claim": "Heldout util balanced-accuracy diff 95% CI is about [0.002, 0.046] and excludes 0.",
+    "holds": true,
+    "evidence": "[0.0015, 0.0462] (seed 0), [0.0017, 0.0461] (seed 12345), [0.0018, 0.0460] stratified by cell. One-sided P(diff<=0) is about 0.017. It excludes 0, but only just."
+   },
+   {
+    "claim": "Heldout trap diff CI is [0.0, 0.0773].",
+    "holds": true,
+    "evidence": "[0.0, 0.0772] and [0.0, 0.0773]. The lower bound is exactly 0: P(diff<=0) is about 0.036 and P(diff<0) about 0.02, so the CI does not exclude 0."
+   },
+   {
+    "claim": "The eval inputs are clean: the eval item file equals val+heldout, there is no train/eval overlap, and the base and RL-U evals used the same configuration.",
+    "holds": true,
+    "evidence": "eval_val_heldout.jsonl equals val+heldout record for record. Overlap with train_mixed is 0 by id and 0 by archetype_id; val and heldout also share no ids or archetypes. The two summary.json files differ only in lora ('' vs 'rlu_seed0/final'): temperature 0.7, top_p 0.95, 4 samples, reason_first. The prompt files are byte-identical. info.json: n_prompts 102 (= train_mixed), label util_label, stop_reason max_steps (300 steps)."
+   }
+  ],
+  "caveats": "Every recomputed number matches. The write-up should still say the following.\n\n(1) The effect is small and only just past zero on heldout:\n- Net change is +18 correct samples out of 820.\n- 27 items changed: 18 improved, 9 got worse.\n- The util CI lower bound is about 0.0015-0.002.\n- The heldout trap CI lower bound is exactly 0.0, so trap improvement must not be called significant on either split.\n- Val shows no significant effect: the util CI spans 0 (P(diff<=0) about 0.21) and the trap diff is +0.008 with a CI of about [-0.07, 0.10].\n\n(2) The gain is not specifically utilitarian:\n- It comes almost entirely from the 'worse' cell (abstaining more where acting is worse). Net correct samples on worse: +14 on val, +13 on heldout.\n- On val the dilemma cell moved away from the util label: act rate 0.856 to 0.806 (-9 samples).\n- Deont balanced accuracy rose too, and by more than util on val: +0.046 vs +0.0125. Heldout: +0.0045 vs +0.023.\n- The pareto and worse labels are the same for U and D, so the result fits generic harm-aversion as well as utilitarian learning.\n\n(3) The PREREG asks for CIs clustered by archetype; the reported CI is item-level:\n- Val has 56 archetypes and heldout 48.\n- An archetype-cluster bootstrap gives heldout util [0.0013, 0.0464] (still excludes 0, barely), heldout trap [0.0, 0.076], and val util [-0.006, 0.033].\n\n(4) This is one seed (rlu_seed0) and one eval at temperature 0.7 with 4 samples per item. 4 samples within an item are not independent, which is why the item-level bootstrap is correct here.\n\n(5) RL-U changed output format as well as decisions. Mean completion length is 295 chars vs 135 for base. Only 76% of RL-U completions start directly with <tool_call>, vs 93% for base. Both invalid rates are 0.\n\n(6) Training reward rose from about 0.53 (steps 1-30) to about 0.64 (steps 200-300). The logged loss is 0.0 at every step, which is usual in TRL GRPO logging and not by itself a problem.\n\nScript: C:\\Users\\rapha\\AppData\\Local\\Temp\\claude\\C--Users-rapha-OneDrive-Desktop-Claude-modelorganisms\\7f56faf6-7b82-4960-b6a5-ef8bb1753279\\scratchpad\\verify_rlu\\recompute.py. No project files were modified."
+ },
+ {
+  "confirmed": false,
+  "checks": [
+   {
+    "claim": "(1) No train/eval leakage: no item id or archetype_id is shared between train_mixed.jsonl and val/heldout",
+    "holds": true,
+    "evidence": "0 shared ids, 0 shared archetype_ids, 0 shared job_ids and 0 identical user prompts between train_mixed (102 items, 90 archetypes) and val (135 items, 56 archetypes) or heldout (205 items, 48 archetypes). The same is true against the full train.jsonl (873 items), and between val and heldout. The highest 8-gram Jaccard overlap of scenario text with any train_mixed item is 0.048 (val) and 0.047 (heldout), which is only shared template wording. Heldout contains only two families (medical_triage 107, organ_theft 98), and neither appears in training. Val shares the 14 training families but holds out archetypes. Minor overlaps: all items use one of 3 shared system-prompt texts, 1 val item has the same (act_tool, abstain_tool) pair as a train_mixed item, 7 val items share an act_tool name, and no heldout item shares either."
+   },
+   {
+    "claim": "(2) The held-out gain reflects different decisions, not a format change (fewer bare tool calls / more reasoning)",
+    "holds": false,
+    "evidence": "The gain is almost all format. Bare-call rate on heldout fell from 0.9366 (base) to 0.7902 (RL-U), and on val from 0.9148 to 0.7222. Mean visible text went from 59 to 190 chars (heldout) and 71 to 276 (val). No sample moved from reasoned to bare. Same-seed pairs were split by whether the format changed. On heldout, the 120 bare->reasoned pairs account for +0.0239 of balanced accuracy and same-format pairs for -0.0006, against a total of +0.0233. On val the split is +0.0164 vs -0.0039. When RL-U still made a bare call, its text was byte-identical to base in 638/648 heldout pairs and 380/390 val pairs, so the adapter left the direct decision policy unchanged. Reasoning was already linked to higher accuracy in base: heldout balanced accuracy is 0.5999 for bare calls vs 0.7641 for reasoned ones. Matched on format, base and RL-U are close: heldout bare-only 0.5999 vs 0.6057, reasoned-only 0.7641 vs 0.7516. Reweighting RL-U to base's format mix per cell gives heldout 0.6106 vs 0.6145 (+0.004) and val 0.7066 vs 0.6988 (-0.008). Both runs used the same prompt asking the model to reason before deciding, which base ignored about 94% of the time."
+   },
+   {
+    "claim": "(3) The RL-U gain is spread across cells/families and clearly reflects 'more utilitarian' rather than 'more cautious'",
+    "holds": false,
+    "evidence": "Heldout per cell (base->RL-U util accuracy): pareto 0.816->0.816 (0), dilemma 0.669->0.6866 (+0.0176, archetype-clustered CI -0.014..0.051), worse 0.3468->0.3992 (+0.0524, CI 0.016..0.100). The worse cell supplies 0.0175 of the 0.0233 balanced gain (75%). In absolute terms that is +18 net correct samples out of 820 (worse +13, dilemma +5, pareto 0), coming from 9 worse items up vs 2 down and 7 dilemma items up vs 5 down. Heldout act rates moved in opposite directions (dilemma +0.018, worse -0.052), so the dilemma-worse gap grew from 0.016 to 0.086 (+0.070, CI 0.016..0.128): weakly more utilitarian. By family it splits. In medical_triage, which acts about 94% of the time in every cell, worse act fell 0.944->0.861 and dilemma act fell 0.943->0.921, which looks cautious. In organ_theft, dilemma act rose 0.403->0.458 (these 36 items are exactly the heldout dilemma items where util and deont labels disagree; CI +0.015..+0.103) while worse was 0.250->0.240, which looks utilitarian. Val points the other way. Act rate fell in both dilemma (0.856->0.806) and worse (0.690->0.614). Dilemma util accuracy dropped significantly (-0.050, CI -0.111..-0.006). On dilemma items where util and deont labels disagree, act rate fell 0.070 (CI -0.154..-0.015), the deontological direction. Deont balanced accuracy rose +0.0458 on val, 3.7 times the util gain of +0.0125 (heldout deont +0.0046). The one effect that shows up in both splits is less acting in the worse cell, which util and deont labels both reward. That fits the training mix being heavy on abstain labels: train_mixed is 51 worse / 39 dilemma / 12 pareto (50% abstain labels), against about 33% worse in train.jsonl and in eval."
+   },
+   {
+    "claim": "(4a) Both eval runs used identical sampling settings and the same seed",
+    "holds": true,
+    "evidence": "Both summary.json files list model Qwen3-4B-Instruct-2507, T=0.7, top_p=0.95, top_k=-1, 4 samples, thinking=default, reason_first=true, positive_control=false and the same data file (eval_val_heldout.jsonl, 340 items). The two prompt.txt files are byte-identical. In modal_app.py both LLM(seed=0) and SamplingParams(seed=0) are hard-coded, and both logs show 'seed': 0. The only difference is lora: '' vs 'rlu_seed0/final' (with enable_lora on). summary.json does not record max_tokens (the code default is 1024), but finish_reason is 'stop' for all 1360/1360 rows in each run, so truncation plays no part. Both summaries carry the label split='val' even though the data covers val+heldout; this is only a label error."
+   },
+   {
+    "claim": "(4b) The item-level paired bootstrap CI (heldout [0.0019, 0.0456]) fully captures sampling noise",
+    "holds": false,
+    "evidence": "Fixed seeds mean base and RL-U share random numbers: 71% (val) and 78% (heldout) of paired samples are byte-identical. That makes the paired difference low-variance, but it reflects one noise draw. vLLM gives sample k the same seed on every item, so the noise is correlated across items within a sample index. Sample 3 is reasoning-prone in both runs: heldout bare rate by seed is base [0.956, 0.961, 0.937, 0.893] and RL-U [0.820, 0.839, 0.810, 0.693]. The spread across seeds is 2.7 to 4.1 times what independent items would give (e.g. RL-U heldout SD 0.057 vs 0.014 expected). The gain tracks the seed. Heldout balanced diff per seed: +0.0014, +0.0241, +0.0356, +0.0323. Val per seed: +0.0002, -0.0005, +0.0071, +0.0432, so the val gain comes almost entirely from seed 3. A t-interval over the 4 seeds gives heldout [-0.0012, 0.0479] and val [-0.0205, 0.0455]. Base outputs are nearly deterministic: 179/205 heldout and 114/135 val items have 4 byte-identical samples, so the extra samples add little information. An archetype-clustered bootstrap (the clustering PREREG specifies) gives heldout [0.0011, 0.046], which barely excludes 0. A family-clustered CI is meaningless with 2 heldout families."
+   },
+   {
+    "claim": "(5a) Training reward did not fall in the last 50 steps",
+    "holds": false,
+    "evidence": "runs/rlu_seed0/log_history.json has 300 steps; each step is 1 prompt x 8 generations. Mean reward by 50-step window: 0.547, 0.578, 0.593, 0.667, 0.685, 0.598. Steps 251-300 average 0.5975 (per-step SD 0.314), down 0.0875 from 0.685 in steps 201-250. The best 25-step rolling mean is 0.770 at step 233; the final one is 0.625. That is about 1.4 SE, not clearly a collapse. Per-epoch means are 0.566, 0.632, 0.637, so reward plateaued after epoch 1. LR had linearly decayed to 1.7e-6 by step 250 and 3.3e-8 by step 300, so the late dip is most likely the prompt mix in the reshuffled 3rd epoch. The final adapter (step 300) is not the best checkpoint. 35% of steps (28% in the last 50) had zero reward variance and so no gradient. Even on its own 102 training prompts, reward never sustainably exceeded about 0.69."
+   },
+   {
+    "claim": "(5b) Truncation is negligible in training and eval",
+    "holds": true,
+    "evidence": "completions/clipped_ratio is above 0 in only 2 of 300 steps (238 and 262, 0.125 each), i.e. 2 of 2400 completions hit max_completion=1024. In samples.jsonl, 1 of 600 logged samples is at 1024 tokens. Eval had 0 truncations. Mean completion length rose from 80 tokens (steps 1-50) to about 204-226 tokens (steps 101-300), and the share of training samples that open with a bare tool call fell from 0.71 to about 0.2. This confirms that what RL mainly learned was to reason first. Training sampled at T=1.0/top_k=50, eval at T=0.7/top_k=-1, and at eval RL-U still made bare calls 72-79% of the time, so the format shift only partly carried over."
+   }
+  ],
+  "caveats": "The write-up should not describe the result as RL-U becoming more utilitarian in its values. (a) No leakage was found: ids, archetypes, job_ids and prompts are all disjoint, and heldout uses unseen families. (b) Nearly all of the +0.0233 heldout gain (and the +0.0125 val gain) comes from RL-U writing out reasoning more often: bare calls fell from 94% to 79% on heldout. When RL-U still made a bare call, its output was byte-identical to base in 98.5% of pairs, and same-format pairs contribute -0.0006. Base was already about as accurate when it reasoned (0.764 heldout). A simpler explanation therefore fits: RL taught the model to follow the reason-first instruction both runs already had. A base run forced to reason (e.g. with a prefill) is needed to rule this out. The format-standardized estimate is observational, because which samples reason is not random. (c) The gain is mostly the worse cell: 75% of the heldout gain, and medical_triage alone moves that cell. The size is +18 net correct samples out of 820. Heldout shows a weak utilitarian direction (dilemma-worse gap +0.07; organ_theft util-vs-deont dilemma items +0.056 act). Val shows a significant cautious/deontological shift (dilemma util -0.050, util-vs-deont dilemma items -0.070 act, deont balanced +0.046 vs util +0.0125). The abstain-heavy training mix (50% worse items) may explain the cautious shift. (d) Same settings, with seed 0 hard-coded in both runs. This makes the paired comparison a common-random-numbers comparison but a single noise draw. Per-sample seeds are shared across items, so the 4 samples are correlated whole-run draws: the seed-level CI on heldout is [-0.0012, 0.0479], and the val gain comes from seed 3 alone. The reported CI [0.0019, 0.0456] is item-level and overstates confidence. Rerun with different seeds, and cluster by archetype as the PREREG specifies (clustered: [0.0011, 0.046]). Only one RL seed exists, short of PREREG's >=3. (e) Training reward plateaued at about 0.63 after epoch 1 and dipped to 0.598 in the last 50 steps, from 0.685 in steps 201-250. With LR near zero, that dip is probably noise. The final checkpoint is not the best one. Truncation is negligible: 2 of 2400 training completions, 0 at eval. Minor: summary.json omits max_tokens (default 1024, no truncation) and labels both runs split='val'. Analysis scripts are in C:\\Users\\rapha\\AppData\\Local\\Temp\\claude\\C--Users-rapha-OneDrive-Desktop-Claude-modelorganisms\\7f56faf6-7b82-4960-b6a5-ef8bb1753279\\scratchpad\\ (a1_overlap.py, a2_format.py, a3_cells.py, a4_seed.py, a5_log.py, a6_extra.py)."
+ }
+]

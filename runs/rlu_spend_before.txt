@@ -1,0 +1,2 @@
+{'modelorganisms-sample': 0.5239, 'modelorganisms-grpo': 0.5309, 'modelorganisms-diag': 0.0099}
+TODAY TOTAL BEFORE GOAL: $1.0646

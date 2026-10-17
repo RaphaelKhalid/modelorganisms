@@ -1,0 +1,30 @@
+{
+ "val": {
+  "util_bal_diff": 0.0125,
+  "ci95": [
+   -0.0161,
+   0.042
+  ],
+  "trap_diff": 0.0081,
+  "trap_ci95": [
+   -0.0726,
+   0.0968
+  ],
+  "n_items": 135,
+  "n_trap_items": 31
+ },
+ "heldout": {
+  "util_bal_diff": 0.0233,
+  "ci95": [
+   0.0019,
+   0.0456
+  ],
+  "trap_diff": 0.0364,
+  "trap_ci95": [
+   0.0,
+   0.0773
+  ],
+  "n_items": 205,
+  "n_trap_items": 55
+ }
+}

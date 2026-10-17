@@ -1,0 +1,2 @@
+{'modelorganisms-sample': 0.7321, 'modelorganisms-grpo': 2.5326, 'modelorganisms-diag': 0.0099}
+TODAY TOTAL NOW: $3.2746 | NEW SPEND THIS GOAL: $2.2100 (budget $6)

@@ -1,0 +1,54 @@
+✓ Initialized. View run at 
+https://modal.com/apps/raphaelkhalid/main/ap-R1k0Pb6YxOPtm9FqrMcmmD
+✓ Created objects.
+├── ✓ Uploaded 
+│   C:\Users\rapha\OneDrive\Desktop\Claude\modelorganisms\train_grpo.py
+├── ✓ Uploaded PythonPackage:organism
+└── ✓ Created Function train.
+GRPO Qwen/Qwen3-4B-Instruct-2507 | label=util_label | steps=5 | prompts=102 | gens=8 | max_completion=1024 | gpu=L40S | sampling T=1.0 top_p=0.95 top_k=50 | time cap 10.0 min, hard timeout 25 min
+setup: {"eos_token": "<|im_end|>", "eos_token_id": 151645, "max_prompt_tokens": 665, "mean_prompt_tokens": 580.4, "n_prompts": 102, "sampling": {"temperature": 1.0, "top_p": 0.95, "top_k": 50}, "label": "util_label"}
+`torch_dtype` is deprecated! Use `dtype` instead!
+
+[1ALoading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]
+[1ALoading checkpoint shards:  33%|███▎      | 1/3 [00:00<00:01,  1.23it/s]
+[1ALoading checkpoint shards:  67%|██████▋   | 2/3 [00:01<00:00,  1.08it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:01<00:00,  1.63it/s]
+[RANK 0] Detected kernel version 4.19.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 151643}.
+
+[1A  0%|          | 0/5 [00:00<?, ?it/s]`generation_config` default values have been modified to match model-specific defaults: {'temperature': 0.7, 'top_k': 20}. If this is not desired, please set these values explicitly.
+
+[1A 20%|██        | 1/5 [00:02<00:11,  2.94s/it]                                             
+{'loss': 0.0, 'grad_norm': 25.696142196655273, 'learning_rate': 1e-05, 'num_tokens': 4688.0, 'completions/mean_length': 18.0, 'completions/min_length': 18.0, 'completions/max_length': 18.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 18.0, 'completions/min_terminated_length': 18.0, 'completions/max_terminated_length': 18.0, 'rewards/util_label_reward/mean': 0.75, 'rewards/util_label_reward/std': 0.4629100561141968, 'reward': 0.75, 'reward_std': 0.4629100561141968, 'frac_reward_zero_std': 0.0, 'entropy': 0.04106793086975813, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.01}
+[1A
+[1A 20%|██        | 1/5 [00:02<00:11,  2.94s/it]
+[1A 40%|████      | 2/5 [00:11<00:18,  6.23s/it]                                             
+[1A
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 8.000000000000001e-06, 'num_tokens': 10002.0, 'completions/mean_length': 38.25, 'completions/min_length': 16.0, 'completions/max_length': 194.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 38.25, 'completions/min_terminated_length': 16.0, 'completions/max_terminated_length': 194.0, 'rewards/util_label_reward/mean': 0.0, 'rewards/util_label_reward/std': 0.0, 'reward': 0.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.12805832596495748, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.02}
+[1A 40%|████      | 2/5 [00:11<00:18,  6.23s/it]
+[1A 60%|██████    | 3/5 [00:13<00:08,  4.35s/it]
+[1A                                             
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 6e-06, 'num_tokens': 14658.0, 'completions/mean_length': 18.0, 'completions/min_length': 18.0, 'completions/max_length': 18.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 18.0, 'completions/min_terminated_length': 18.0, 'completions/max_terminated_length': 18.0, 'rewards/util_label_reward/mean': 1.0, 'rewards/util_label_reward/std': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.06864795088768005, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.03}
+[1A
+[1A 60%|██████    | 3/5 [00:13<00:08,  4.35s/it]
+[1A 80%|████████  | 4/5 [00:25<00:07,  7.16s/it]
+[1A                                             
+[1A
+{'loss': 0.0, 'grad_norm': 1.964336633682251, 'learning_rate': 4.000000000000001e-06, 'num_tokens': 20186.0, 'completions/mean_length': 134.0, 'completions/min_length': 16.0, 'completions/max_length': 277.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 134.0, 'completions/min_terminated_length': 16.0, 'completions/max_terminated_length': 277.0, 'rewards/util_label_reward/mean': 0.625, 'rewards/util_label_reward/std': 0.5175492167472839, 'reward': 0.625, 'reward_std': 0.5175491571426392, 'frac_reward_zero_std': 0.0, 'entropy': 0.2944582849740982, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.04}
+[1A 80%|████████  | 4/5 [00:25<00:07,  7.16s/it]
+[1A100%|██████████| 5/5 [00:27<00:00,  5.32s/it]
+[1A                                             
+[1A
+{'loss': 0.0, 'grad_norm': 14.299283027648926, 'learning_rate': 2.0000000000000003e-06, 'num_tokens': 24601.0, 'completions/mean_length': 16.875, 'completions/min_length': 16.0, 'completions/max_length': 17.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 16.875, 'completions/min_terminated_length': 16.0, 'completions/max_terminated_length': 17.0, 'rewards/util_label_reward/mean': 0.875, 'rewards/util_label_reward/std': 0.3535533845424652, 'reward': 0.875, 'reward_std': 0.3535533845424652, 'frac_reward_zero_std': 0.0, 'entropy': 0.047518625389784575, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.05}
+[1A100%|██████████| 5/5 [00:27<00:00,  5.32s/it]                                             
+{'train_runtime': 39.5447, 'train_samples_per_second': 1.012, 'train_steps_per_second': 0.126, 'train_loss': 2.6822090148925782e-08, 'epoch': 0.05}
+[1A100%|██████████| 5/5 [00:39<00:00,  5.32s/it]
+[1A100%|██████████| 5/5 [00:39<00:00,  7.91s/it]
+info: {"eos_token": "<|im_end|>", "eos_token_id": 151645, "max_prompt_tokens": 665, "mean_prompt_tokens": 580.4, "n_prompts": 102, "sampling": {"temperature": 1.0, "top_p": 0.95, "top_k": 50}, "label": "util_label", "model_dtype": "torch.bfloat16", "stop_reason": "max_steps", "minutes": 0.8, "step_times": [9.5, 18.0, 20.1, 31.6, 33.7], "cuda_max_mem_gb": 15.0}
+{'completions/mean_length': 18.0, 'completions/clipped_ratio': 0.0, 'reward': 0.75, 'reward_std': 0.463, 'frac_reward_zero_std': 0.0, 'step': 1}
+{'completions/mean_length': 38.25, 'completions/clipped_ratio': 0.0, 'reward': 0.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'step': 2}
+{'completions/mean_length': 18.0, 'completions/clipped_ratio': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'step': 3}
+{'completions/mean_length': 134.0, 'completions/clipped_ratio': 0.0, 'reward': 0.625, 'reward_std': 0.518, 'frac_reward_zero_std': 0.0, 'step': 4}
+{'completions/mean_length': 16.875, 'completions/clipped_ratio': 0.0, 'reward': 0.875, 'reward_std': 0.354, 'frac_reward_zero_std': 0.0, 'step': 5}
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/raphaelkhalid/main/ap-R1k0Pb6YxOPtm9FqrMcmmD
