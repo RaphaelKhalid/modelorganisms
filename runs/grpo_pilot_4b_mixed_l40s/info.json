@@ -1,0 +1,43 @@
+{
+ "eos_token": "<|im_end|>",
+ "eos_token_id": 151645,
+ "max_prompt_tokens": 634,
+ "mean_prompt_tokens": 580.3,
+ "n_prompts": 24,
+ "sampling": {
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 50
+ },
+ "label": "util_label",
+ "model_dtype": "torch.bfloat16",
+ "stop_reason": "max_steps",
+ "minutes": 4.9,
+ "step_times": [
+  21.6,
+  23.8,
+  26.2,
+  39.9,
+  42.5,
+  45.1,
+  60.4,
+  71.8,
+  86.5,
+  89.0,
+  100.8,
+  103.3,
+  116.7,
+  146.5,
+  161.9,
+  175.5,
+  185.2,
+  208.3,
+  217.4,
+  229.3,
+  246.4,
+  257.9,
+  260.2,
+  282.9
+ ],
+ "cuda_max_mem_gb": 19.0
+}

@@ -27,6 +27,7 @@ image = (
     modal.Image.debian_slim(python_version="3.12")
     .pip_install("torch==2.7.1", "transformers>=4.55.0,<4.57", "trl==0.21.0", "peft==0.17.0",
                  "datasets>=3.0", "accelerate>=1.4")
+    .env({"PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"})  # less fragmentation with long completions
     .add_local_python_source("organism")
 )
 hf_cache = modal.Volume.from_name("hf-cache", create_if_missing=True)
@@ -102,6 +103,8 @@ def train(model_id: str, rows: list[dict], label: str, max_steps: int, run_name:
                 control.should_training_stop = True
 
         def on_log(self, args, st, control, logs=None, **kw):
+            with (out_dir / "log.jsonl").open("a", encoding="utf-8") as f:  # survives a crash, unlike log_history
+                f.write(json.dumps({"step": st.global_step, **(logs or {})}) + "\n")
             clipped = [h["completions/clipped_ratio"] for h in st.log_history if "completions/clipped_ratio" in h]
             if len(clipped) >= 3 and sum(clipped) / len(clipped) >= TRUNCATION_ABORT:
                 state["stop_reason"] = f"truncation abort: mean clipped ratio {sum(clipped) / len(clipped):.2f}"

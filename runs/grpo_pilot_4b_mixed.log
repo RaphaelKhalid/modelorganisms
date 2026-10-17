@@ -1,0 +1,226 @@
+✓ Initialized. View run at 
+https://modal.com/apps/raphaelkhalid/main/ap-Y27ZrmIF7ogsmwnidSQJAA
+✓ Created objects.
+├── ✓ Uploaded 
+│   C:\Users\rapha\OneDrive\Desktop\Claude\modelorganisms\train_grpo.py
+├── ✓ Uploaded PythonPackage:organism
+└── ✓ Created Function train.
+GRPO Qwen/Qwen3-4B-Instruct-2507 | label=util_label | steps=24 | prompts=24 | gens=8 | max_completion=1024 | gpu=L4 | sampling T=1.0 top_p=0.95 top_k=50 | time cap 15.0 min, hard timeout 30 min
+setup: {"eos_token": "<|im_end|>", "eos_token_id": 151645, "max_prompt_tokens": 634, "mean_prompt_tokens": 580.3, "n_prompts": 24, "sampling": {"temperature": 1.0, "top_p": 0.95, "top_k": 50}, "label": "util_label"}
+`torch_dtype` is deprecated! Use `dtype` instead!
+
+[1ALoading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]
+[1ALoading checkpoint shards:  33%|███▎      | 1/3 [00:01<00:02,  1.16s/it]
+[1ALoading checkpoint shards:  67%|██████▋   | 2/3 [00:02<00:01,  1.30s/it]
+[1ALoading checkpoint shards: 100%|██████████| 3/3 [00:02<00:00,  1.16it/s]
+[RANK 0] Detected kernel version 4.19.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 151643}.
+
+[1A  0%|          | 0/24 [00:00<?, ?it/s]`generation_config` default values have been modified to match model-specific defaults: {'temperature': 0.7, 'top_k': 20}. If this is not desired, please set these values explicitly.
+
+[1A  4%|▍         | 1/24 [00:06<02:27,  6.43s/it]
+[1A                                              
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 1e-05, 'num_tokens': 5024.0, 'completions/mean_length': 16.0, 'completions/min_length': 16.0, 'completions/max_length': 16.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 16.0, 'completions/min_terminated_length': 16.0, 'completions/max_terminated_length': 16.0, 'rewards/util_label_reward/mean': 0.0, 'rewards/util_label_reward/std': 0.0, 'reward': 0.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.05122588202357292, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.04}
+[1A
+[1A  4%|▍         | 1/24 [00:06<02:27,  6.43s/it]
+[1A  8%|▊         | 2/24 [00:11<02:07,  5.82s/it]                                              
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 9.583333333333335e-06, 'num_tokens': 9528.0, 'completions/mean_length': 16.0, 'completions/min_length': 16.0, 'completions/max_length': 16.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 16.0, 'completions/min_terminated_length': 16.0, 'completions/max_terminated_length': 16.0, 'rewards/util_label_reward/mean': 1.0, 'rewards/util_label_reward/std': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.027148636057972908, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.08}
+[1A
+[1A  8%|▊         | 2/24 [00:11<02:07,  5.82s/it]
+[1A 12%|█▎        | 3/24 [00:17<02:00,  5.73s/it]                                              
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 9.166666666666666e-06, 'num_tokens': 14376.0, 'completions/mean_length': 16.0, 'completions/min_length': 16.0, 'completions/max_length': 16.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 16.0, 'completions/min_terminated_length': 16.0, 'completions/max_terminated_length': 16.0, 'rewards/util_label_reward/mean': 0.0, 'rewards/util_label_reward/std': 0.0, 'reward': 0.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.028109455481171608, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.12}
+[1A
+[1A 12%|█▎        | 3/24 [00:17<02:00,  5.73s/it]
+[1A 17%|█▋        | 4/24 [00:45<04:47, 14.35s/it]                                              
+{'loss': 0.0, 'grad_norm': 0.5456576943397522, 'learning_rate': 8.750000000000001e-06, 'num_tokens': 20916.0, 'completions/mean_length': 221.5, 'completions/min_length': 201.0, 'completions/max_length': 288.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 221.5, 'completions/min_terminated_length': 201.0, 'completions/max_terminated_length': 288.0, 'rewards/util_label_reward/mean': 0.875, 'rewards/util_label_reward/std': 0.3535533845424652, 'reward': 0.875, 'reward_std': 0.3535533845424652, 'frac_reward_zero_std': 0.0, 'entropy': 0.5130522660911083, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.17}
+[1A
+[1A 17%|█▋        | 4/24 [00:45<04:47, 14.35s/it]
+[1A 21%|██        | 5/24 [00:51<03:38, 11.48s/it]                                              
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 8.333333333333334e-06, 'num_tokens': 26148.0, 'completions/mean_length': 20.0, 'completions/min_length': 20.0, 'completions/max_length': 20.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 20.0, 'completions/min_terminated_length': 20.0, 'completions/max_terminated_length': 20.0, 'rewards/util_label_reward/mean': 1.0, 'rewards/util_label_reward/std': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.024012316018342972, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.21}
+[1A
+[1A 21%|██        | 5/24 [00:51<03:38, 11.48s/it]
+[1A 25%|██▌       | 6/24 [00:57<02:54,  9.70s/it]                                              
+{'loss': 0.0, 'grad_norm': 17.624521255493164, 'learning_rate': 7.916666666666667e-06, 'num_tokens': 31184.0, 'completions/mean_length': 17.5, 'completions/min_length': 16.0, 'completions/max_length': 18.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 17.5, 'completions/min_terminated_length': 16.0, 'completions/max_terminated_length': 18.0, 'rewards/util_label_reward/mean': 0.75, 'rewards/util_label_reward/std': 0.4629100561141968, 'reward': 0.75, 'reward_std': 0.4629100561141968, 'frac_reward_zero_std': 0.0, 'entropy': 0.04139824956655502, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.25}
+[1A
+[1A 25%|██▌       | 6/24 [00:57<02:54,  9.70s/it]
+[1A 29%|██▉       | 7/24 [01:29<04:50, 17.06s/it]                                              
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 7.500000000000001e-06, 'num_tokens': 36913.0, 'completions/mean_length': 128.125, 'completions/min_length': 18.0, 'completions/max_length': 344.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 128.125, 'completions/min_terminated_length': 18.0, 'completions/max_terminated_length': 344.0, 'rewards/util_label_reward/mean': 1.0, 'rewards/util_label_reward/std': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.21455432660877705, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.29}
+[1A
+[1A 29%|██▉       | 7/24 [01:29<04:50, 17.06s/it]
+[1A 33%|███▎      | 8/24 [01:56<05:22, 20.15s/it]                                              
+{'loss': -0.0, 'grad_norm': 1.4120079278945923, 'learning_rate': 7.083333333333335e-06, 'num_tokens': 42387.0, 'completions/mean_length': 105.25, 'completions/min_length': 16.0, 'completions/max_length': 282.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 105.25, 'completions/min_terminated_length': 16.0, 'completions/max_terminated_length': 282.0, 'rewards/util_label_reward/mean': 0.125, 'rewards/util_label_reward/std': 0.3535533845424652, 'reward': 0.125, 'reward_std': 0.3535533845424652, 'frac_reward_zero_std': 0.0, 'entropy': 0.2300988994538784, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.33}
+[1A
+[1A 33%|███▎      | 8/24 [01:56<05:22, 20.15s/it]
+[1A 38%|███▊      | 9/24 [02:02<03:55, 15.72s/it]                                              
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 6.666666666666667e-06, 'num_tokens': 47115.0, 'completions/mean_length': 20.0, 'completions/min_length': 20.0, 'completions/max_length': 20.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 20.0, 'completions/min_terminated_length': 20.0, 'completions/max_terminated_length': 20.0, 'rewards/util_label_reward/mean': 0.0, 'rewards/util_label_reward/std': 0.0, 'reward': 0.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.034416478127241135, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.38}
+[1A
+[1A 38%|███▊      | 9/24 [02:02<03:55, 15.72s/it]
+[1A 42%|████▏     | 10/24 [02:08<02:56, 12.62s/it]                                               
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 6.25e-06, 'num_tokens': 51635.0, 'completions/mean_length': 18.0, 'completions/min_length': 18.0, 'completions/max_length': 18.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 18.0, 'completions/min_terminated_length': 18.0, 'completions/max_terminated_length': 18.0, 'rewards/util_label_reward/mean': 1.0, 'rewards/util_label_reward/std': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.021408725529909134, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.42}
+[1A
+[1A 42%|████▏     | 10/24 [02:08<02:56, 12.62s/it]
+[1A 46%|████▌     | 11/24 [02:29<03:19, 15.35s/it]                                               
+{'loss': 0.0, 'grad_norm': 5.933670997619629, 'learning_rate': 5.833333333333334e-06, 'num_tokens': 57012.0, 'completions/mean_length': 121.125, 'completions/min_length': 16.0, 'completions/max_length': 213.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 121.125, 'completions/min_terminated_length': 16.0, 'completions/max_terminated_length': 213.0, 'rewards/util_label_reward/mean': 0.875, 'rewards/util_label_reward/std': 0.3535533845424652, 'reward': 0.875, 'reward_std': 0.3535533845424652, 'frac_reward_zero_std': 0.0, 'entropy': 0.2298273667693138, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.46}
+[1A
+[1A 46%|████▌     | 11/24 [02:29<03:19, 15.35s/it]
+[1A 50%|█████     | 12/24 [02:36<02:31, 12.66s/it]                                               
+{'loss': -0.0, 'grad_norm': 5.775249004364014, 'learning_rate': 5.416666666666667e-06, 'num_tokens': 62104.0, 'completions/mean_length': 16.5, 'completions/min_length': 16.0, 'completions/max_length': 18.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 16.5, 'completions/min_terminated_length': 16.0, 'completions/max_terminated_length': 18.0, 'rewards/util_label_reward/mean': 0.25, 'rewards/util_label_reward/std': 0.4629100561141968, 'reward': 0.25, 'reward_std': 0.4629100561141968, 'frac_reward_zero_std': 0.0, 'entropy': 0.03503984957933426, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.5}
+[1A
+[1A 50%|█████     | 12/24 [02:36<02:31, 12.66s/it]
+[1A 54%|█████▍    | 13/24 [03:00<02:58, 16.19s/it]                                               
+{'loss': -0.0, 'grad_norm': 0.7148248553276062, 'learning_rate': 5e-06, 'num_tokens': 68118.0, 'completions/mean_length': 189.75, 'completions/min_length': 152.0, 'completions/max_length': 247.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 189.75, 'completions/min_terminated_length': 152.0, 'completions/max_terminated_length': 247.0, 'rewards/util_label_reward/mean': 0.375, 'rewards/util_label_reward/std': 0.5175492167472839, 'reward': 0.375, 'reward_std': 0.5175491571426392, 'frac_reward_zero_std': 0.0, 'entropy': 0.48904578760266304, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.54}
+[1A
+[1A 54%|█████▍    | 13/24 [03:00<02:58, 16.19s/it]Traceback (most recent call last):
+  File "/pkg/modal/_runtime/container_io_manager.py", line 987, in handle_input_exception
+    yield
+  File "/pkg/modal/_container_entrypoint.py", line 189, in run_input_sync
+    values = io_context.call_function_sync()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pkg/modal/_runtime/container_io_manager.py", line 266, in call_function_sync
+    expected_value_or_values = self.finalized_function.callable(*args, **kwargs)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/train_grpo.py", line 130, in train
+    trainer.train(resume_from_checkpoint=True if (resume and has_ckpt) else None)
+  File "/usr/local/lib/python3.12/site-packages/transformers/trainer.py", line 2328, in train
+    return inner_training_loop(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/transformers/trainer.py", line 2672, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/transformers/trainer.py", line 4009, in training_step
+    loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/trl/extras/profiling.py", line 98, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/trl/trainer/grpo_trainer.py", line 1816, in compute_loss
+    return self._compute_loss(model, inputs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/trl/trainer/grpo_trainer.py", line 1827, in _compute_loss
+    per_token_logps, entropies = self._get_per_token_logps_and_entropies(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/trl/extras/profiling.py", line 98, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/trl/trainer/grpo_trainer.py", line 1127, in _get_per_token_logps_and_entropies
+    entropies = entropy_from_logits(logits)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/trl/trainer/utils.py", line 1485, in entropy_from_logits
+    chunk_entropy = -(torch.exp(logps) * logps).sum(-1)
+                      ~~~~~~~~~~~~~~~~~^~~~~~~
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 594.00 MiB. GPU 0 has a total capacity of 22.06 GiB of which 356.88 MiB is free. Process 1 has 21.71 GiB memory in use. Of the allocated memory 20.11 GiB is allocated by PyTorch, and 1.36 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+Stopping app - uncaught exception raised locally: OutOfMemoryError('CUDA out of memory. Tried to allocate 594.00 MiB. GPU 0 has a total capacity of 22.06 GiB of which 356.88 MiB is free. Process 1 has 21.71 GiB memory in use. Of the allocated memory 20.11 GiB is allocated by PyTorch, and 1.36 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)').
+
+[1A 54%|█████▍    | 13/24 [04:25<03:45, 20.45s/it]
+┌───────────────────── Traceback (most recent call last) ─────────────────────┐
+│ C:\Users\rapha\OneDrive\Desktop\Claude\modelorganisms\train_grpo.py:173 in  │
+│ main                                                                        │
+│                                                                             │
+│   172 │   sampling = {"temperature": temperature, "top_p": top_p, "top_k":  │
+│ > 173 │   res = fn.remote(model, rows, label, max_steps, run_name, seed, nu │
+│   174 │   │   │   │   │   max_minutes, save_steps, resume, sampling)        │
+│                                                                             │
+│ C:\Users\rapha\AppData\Local\Programs\Python\Python312\Lib\site-packages\mo │
+│ dal\_object.py:49 in wrapped                                                │
+│                                                                             │
+│    48 │   │   await self.hydrate()                                          │
+│ >  49 │   │   return await method(self, *args, **kwargs)                    │
+│    50                                                                       │
+│                                                                             │
+│ C:\Users\rapha\AppData\Local\Programs\Python\Python312\Lib\site-packages\mo │
+│ dal\_functions.py:2067 in remote                                            │
+│                                                                             │
+│   2066 │   │                                                                │
+│ > 2067 │   │   return await self._call_function(args, kwargs)               │
+│   2068                                                                      │
+│                                                                             │
+│ C:\Users\rapha\AppData\Local\Programs\Python\Python312\Lib\site-packages\mo │
+│ dal\_functions.py:2004 in _call_function                                    │
+│                                                                             │
+│   2003 │   │                                                                │
+│ > 2004 │   │   return await invocation.run_function()                       │
+│   2005                                                                      │
+│                                                                             │
+│ C:\Users\rapha\AppData\Local\Programs\Python\Python312\Lib\site-packages\mo │
+│ dal\_functions.py:515 in run_function                                       │
+│                                                                             │
+│    514 │   │   │   # No more retries left.                                  │
+│ >  515 │   │   │   return await _process_result(                            │
+│    516 │   │   │   │   await_response.output.result, await_response.output. │
+│                                                                             │
+│ C:\Users\rapha\AppData\Local\Programs\Python\Python312\Lib\site-packages\mo │
+│ dal\_utils\function_utils.py:572 in _process_result                         │
+│                                                                             │
+│   571 │   │   │                                                             │
+│ > 572 │   │   │   raise exc_with_hints(exc)                                 │
+│   573                                                                       │
+│                                                                             │
+│     ...Remote call to Modal Function (ta-01M55PSG4WP7H87DGEP1AE638R)...     │
+│                                                                             │
+│ /root/train_grpo.py:130 in train                                            │
+│                                                                             │
+│ > 130 trainer.train(resume_from_checkpoint=True if (resume and has_ckpt) el │
+│                                                                             │
+│                                                                             │
+│ /usr/local/lib/python3.12/site-packages/transformers/trainer.py:2328 in     │
+│ train                                                                       │
+│                                                                             │
+│ > 2328 return inner_training_loop(                                          │
+│                                                                             │
+│                                                                             │
+│ /usr/local/lib/python3.12/site-packages/transformers/trainer.py:2672 in     │
+│ _inner_training_loop                                                        │
+│                                                                             │
+│ > 2672 tr_loss_step = self.training_step(model, inputs, num_items_in_batch) │
+│                                                                             │
+│                                                                             │
+│ /usr/local/lib/python3.12/site-packages/transformers/trainer.py:4009 in     │
+│ training_step                                                               │
+│                                                                             │
+│ > 4009 loss = self.compute_loss(model, inputs, num_items_in_batch=num_items │
+│                                                                             │
+│                                                                             │
+│ /usr/local/lib/python3.12/site-packages/trl/extras/profiling.py:98 in       │
+│ wrapper                                                                     │
+│                                                                             │
+│ > 98 return func(self, *args, **kwargs)                                     │
+│                                                                             │
+│                                                                             │
+│ /usr/local/lib/python3.12/site-packages/trl/trainer/grpo_trainer.py:1816 in │
+│ compute_loss                                                                │
+│                                                                             │
+│ > 1816 return self._compute_loss(model, inputs)                             │
+│                                                                             │
+│                                                                             │
+│ /usr/local/lib/python3.12/site-packages/trl/trainer/grpo_trainer.py:1827 in │
+│ _compute_loss                                                               │
+│                                                                             │
+│ > 1827 per_token_logps, entropies = self._get_per_token_logps_and_entropies │
+│                                                                             │
+│                                                                             │
+│ /usr/local/lib/python3.12/site-packages/trl/extras/profiling.py:98 in       │
+│ wrapper                                                                     │
+│                                                                             │
+│ > 98 return func(self, *args, **kwargs)                                     │
+│                                                                             │
+│                                                                             │
+│ /usr/local/lib/python3.12/site-packages/trl/trainer/grpo_trainer.py:1127 in │
+│ _get_per_token_logps_and_entropies                                          │
+│                                                                             │
+│ > 1127 entropies = entropy_from_logits(logits)                              │
+│                                                                             │
+│                                                                             │
+│ /usr/local/lib/python3.12/site-packages/trl/trainer/utils.py:1485 in        │
+│ entropy_from_logits                                                         │
+│                                                                             │
+│ > 1485 chunk_entropy = -(torch.exp(logps) * logps).sum(-1)                  │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+OutOfMemoryError: CUDA out of memory. Tried to allocate 594.00 MiB. GPU 0 has a
+total capacity of 22.06 GiB of which 356.88 MiB is free. Process 1 has 21.71 
+GiB memory in use. Of the allocated memory 20.11 GiB is allocated by PyTorch, 
+and 1.36 GiB is reserved by PyTorch but unallocated. If reserved but 
+unallocated memory is large try setting 
+PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See 
+documentation for Memory Management  
+(https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
