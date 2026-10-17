@@ -1,0 +1,32 @@
+[
+ {
+  "condition": "eval, cache on",
+  "tokens": 20,
+  "ended": true,
+  "text": "<tool_call>\n{\"name\": \"vent_western_airlock\", \"arguments\": {}}\n</tool_call><|im_end|>"
+ },
+ {
+  "condition": "eval, cache off",
+  "tokens": 20,
+  "ended": true,
+  "text": "<tool_call>\n{\"name\": \"vent_western_airlock\", \"arguments\": {}}\n</tool_call><|im_end|>"
+ },
+ {
+  "condition": "train mode, cache on",
+  "tokens": 20,
+  "ended": true,
+  "text": "<tool_call>\n{\"name\": \"vent_western_airlock\", \"arguments\": {}}\n</tool_call><|im_end|>"
+ },
+ {
+  "condition": "train mode + gradient checkpointing",
+  "tokens": 400,
+  "ended": false,
+  "text": "<tool_call> 18月线式号某导体外痔疮疮病病人通过使用 \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\frac \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\frac{\\frac{a 2000. The 8月光合作研究发现某导光在进行化学与其它研究研究发现某研究者在某化学与光气压断断断断断断断路易使用使用两个电阻Rationalated a a 19. The  19, the 84月光气断断断断路易日光通过光合作学习化学兴趣小组关系家家家兔手术期人向某有机化合物 \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\frac{paulton of the   9月球阀中人在《小明治螟、光在《中华人民共和国刑法中大学数学家用电分层长度为深入学习《铁路工程用一根长为防止甲乙醇与光合作设计一份计划制定一份研究发现一个小型植物的分式法克劳德克劳斯法家家有甲酸碱式家蚕豆豆类关系研究研究研究发现在《中华人民共和国建筑工地防爆破法法國立冬日克劳埃克劳克劳克劳克劳斯蒂曼克劳克劳希克劳光与传统建筑工人在《汉朝光在下列有机化学与甲、《中华人民共和国的 \\ \\frac"
+ },
+ {
+  "condition": "LoRA attached, train mode, cache on",
+  "tokens": 20,
+  "ended": true,
+  "text": "<tool_call>\n{\"name\": \"vent_western_airlock\", \"arguments\": {}}\n</tool_call><|im_end|>"
+ }
+]

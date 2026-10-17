@@ -1,0 +1,31 @@
+✓ Initialized. View run at 
+https://modal.com/apps/raphaelkhalid/main/ap-oy25Awmoqh4Y2FRURELGCc
+✓ Created objects.
+├── ✓ Uploaded 
+│   C:\Users\rapha\OneDrive\Desktop\Claude\modelorganisms\diag_generate.py
+├── ✓ Uploaded PythonPackage:organism
+└── ✓ Created Function diagnose.
+`torch_dtype` is deprecated! Use `dtype` instead!
+
+[1ALoading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]
+[1ALoading checkpoint shards:  33%|███▎      | 1/3 [00:02<00:05,  2.56s/it]
+[1ALoading checkpoint shards:  67%|██████▋   | 2/3 [00:05<00:02,  2.66s/it]
+[1ALoading checkpoint shards: 100%|██████████| 3/3 [00:05<00:00,  1.49s/it]
+[1ALoading checkpoint shards: 100%|██████████| 3/3 [00:05<00:00,  1.80s/it]
+[eval, cache on] tokens=20 ended=True :: '<tool_call>\n{"name": "vent_western_airlock", "arguments": {}}\n</tool_call><|im_end|>'
+[eval, cache off] tokens=20 ended=True :: '<tool_call>\n{"name": "vent_western_airlock", "arguments": {}}\n</tool_call><|im_end|>'
+[train mode, cache on] tokens=20 ended=True :: '<tool_call>\n{"name": "vent_western_airlock", "arguments": {}}\n</tool_call><|im_end|>'
+`use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`.
+Caching is incompatible with gradient checkpointing in Qwen3DecoderLayer. Setting `past_key_values=None`.
+/usr/local/lib/python3.12/site-packages/torch/utils/checkpoint.py:86: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+[train mode + gradient checkpointing] tokens=400 ended=False :: '<tool_call> 18月线式号某导体外痔疮疮病病人通过使用 \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\frac \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\frac{\\frac{a 2000. The 8月光合作研究发现某导光在进行化学与其它研究研究发现某研究者在某化学与光气压断断断断断断断路易使用使用两个电阻Ra'
+[LoRA attached, train mode, cache on] tokens=20 ended=True :: '<tool_call>\n{"name": "vent_western_airlock", "arguments": {}}\n</tool_call><|im_end|>'
+eval, cache on                           tokens=  20 ended=True
+eval, cache off                          tokens=  20 ended=True
+train mode, cache on                     tokens=  20 ended=True
+train mode + gradient checkpointing      tokens= 400 ended=False
+LoRA attached, train mode, cache on      tokens=  20 ended=True
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/raphaelkhalid/main/ap-oy25Awmoqh4Y2FRURELGCc

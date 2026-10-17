@@ -1,0 +1,152 @@
+✓ Initialized. View run at 
+https://modal.com/apps/raphaelkhalid/main/ap-sHqdINOrF15cbWM2KlIxxG
+✓ Created objects.
+├── ✓ Uploaded 
+│   C:\Users\rapha\OneDrive\Desktop\Claude\modelorganisms\train_grpo.py
+├── ✓ Uploaded PythonPackage:organism
+└── ✓ Created Function train.
+GRPO Qwen/Qwen3-4B-Instruct-2507 | label=util_label | steps=24 | prompts=24 | gens=8 | max_completion=1024 | gpu=L4 | sampling T=1.0 top_p=0.95 top_k=50 | time cap 15.0 min, hard timeout 30 min
+setup: {"eos_token": "<|im_end|>", "eos_token_id": 151645, "max_prompt_tokens": 660, "mean_prompt_tokens": 578.8, "n_prompts": 24, "sampling": {"temperature": 1.0, "top_p": 0.95, "top_k": 50}, "label": "util_label"}
+`torch_dtype` is deprecated! Use `dtype` instead!
+
+[1ALoading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]
+[1ALoading checkpoint shards:  33%|███▎      | 1/3 [00:01<00:02,  1.15s/it]
+[1ALoading checkpoint shards:  67%|██████▋   | 2/3 [00:02<00:01,  1.28s/it]
+[1ALoading checkpoint shards: 100%|██████████| 3/3 [00:02<00:00,  1.17it/s]
+[RANK 0] Detected kernel version 4.19.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 151643}.
+
+[1A  0%|          | 0/24 [00:00<?, ?it/s]`generation_config` default values have been modified to match model-specific defaults: {'temperature': 0.7, 'top_k': 20}. If this is not desired, please set these values explicitly.
+
+[1A  4%|▍         | 1/24 [00:08<03:05,  8.04s/it]                                              
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 1e-05, 'num_tokens': 4848.0, 'completions/mean_length': 19.0, 'completions/min_length': 19.0, 'completions/max_length': 19.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 19.0, 'completions/min_terminated_length': 19.0, 'completions/max_terminated_length': 19.0, 'rewards/util_label_reward/mean': 0.0, 'rewards/util_label_reward/std': 0.0, 'reward': 0.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.0008997060358524323, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.04}
+[1A
+[1A  4%|▍         | 1/24 [00:08<03:05,  8.04s/it]
+[1A  8%|▊         | 2/24 [00:14<02:39,  7.23s/it]                                              
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 9.583333333333335e-06, 'num_tokens': 9840.0, 'completions/mean_length': 17.0, 'completions/min_length': 17.0, 'completions/max_length': 17.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 17.0, 'completions/min_terminated_length': 17.0, 'completions/max_terminated_length': 17.0, 'rewards/util_label_reward/mean': 0.0, 'rewards/util_label_reward/std': 0.0, 'reward': 0.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.02029462158679962, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.08}
+[1A
+[1A  8%|▊         | 2/24 [00:14<02:39,  7.23s/it]
+[1A 12%|█▎        | 3/24 [00:21<02:23,  6.84s/it]                                              
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 9.166666666666666e-06, 'num_tokens': 14384.0, 'completions/mean_length': 16.0, 'completions/min_length': 16.0, 'completions/max_length': 16.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 16.0, 'completions/min_terminated_length': 16.0, 'completions/max_terminated_length': 16.0, 'rewards/util_label_reward/mean': 1.0, 'rewards/util_label_reward/std': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.0010407170047983527, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.12}
+[1A
+[1A 12%|█▎        | 3/24 [00:21<02:23,  6.84s/it]
+[1A 17%|█▋        | 4/24 [00:27<02:15,  6.79s/it]                                              
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 8.750000000000001e-06, 'num_tokens': 19088.0, 'completions/mean_length': 19.0, 'completions/min_length': 19.0, 'completions/max_length': 19.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 19.0, 'completions/min_terminated_length': 19.0, 'completions/max_terminated_length': 19.0, 'rewards/util_label_reward/mean': 1.0, 'rewards/util_label_reward/std': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.0031582943629473448, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.17}
+[1A
+[1A 17%|█▋        | 4/24 [00:27<02:15,  6.79s/it]
+[1A 21%|██        | 5/24 [00:34<02:11,  6.92s/it]
+[1A                                              
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 8.333333333333334e-06, 'num_tokens': 24064.0, 'completions/mean_length': 19.0, 'completions/min_length': 19.0, 'completions/max_length': 19.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 19.0, 'completions/min_terminated_length': 19.0, 'completions/max_terminated_length': 19.0, 'rewards/util_label_reward/mean': 1.0, 'rewards/util_label_reward/std': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.0013582507381215692, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.21}
+[1A
+[1A 21%|██        | 5/24 [00:34<02:11,  6.92s/it]
+[1A 25%|██▌       | 6/24 [00:41<02:02,  6.81s/it]                                              
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 7.916666666666667e-06, 'num_tokens': 28576.0, 'completions/mean_length': 18.0, 'completions/min_length': 18.0, 'completions/max_length': 18.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 18.0, 'completions/min_terminated_length': 18.0, 'completions/max_terminated_length': 18.0, 'rewards/util_label_reward/mean': 1.0, 'rewards/util_label_reward/std': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.0009796746307983994, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.25}
+[1A
+[1A 25%|██▌       | 6/24 [00:41<02:02,  6.81s/it]
+[1A 29%|██▉       | 7/24 [00:48<01:55,  6.81s/it]                                              
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 7.500000000000001e-06, 'num_tokens': 33496.0, 'completions/mean_length': 19.0, 'completions/min_length': 19.0, 'completions/max_length': 19.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 19.0, 'completions/min_terminated_length': 19.0, 'completions/max_terminated_length': 19.0, 'rewards/util_label_reward/mean': 1.0, 'rewards/util_label_reward/std': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.0006650709547102451, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.29}
+[1A
+[1A 29%|██▉       | 7/24 [00:48<01:55,  6.81s/it]
+[1A 33%|███▎      | 8/24 [00:55<01:51,  6.97s/it]                                              
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 7.083333333333335e-06, 'num_tokens': 38720.0, 'completions/mean_length': 21.0, 'completions/min_length': 21.0, 'completions/max_length': 21.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 21.0, 'completions/min_terminated_length': 21.0, 'completions/max_terminated_length': 21.0, 'rewards/util_label_reward/mean': 1.0, 'rewards/util_label_reward/std': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.013204338029026985, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.33}
+[1A
+[1A 33%|███▎      | 8/24 [00:55<01:51,  6.97s/it]
+[1A 38%|███▊      | 9/24 [01:02<01:44,  6.97s/it]                                              
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 6.666666666666667e-06, 'num_tokens': 43584.0, 'completions/mean_length': 20.0, 'completions/min_length': 20.0, 'completions/max_length': 20.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 20.0, 'completions/min_terminated_length': 20.0, 'completions/max_terminated_length': 20.0, 'rewards/util_label_reward/mean': 1.0, 'rewards/util_label_reward/std': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.009138982743024826, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.38}
+[1A
+[1A 38%|███▊      | 9/24 [01:02<01:44,  6.97s/it]
+[1A 42%|████▏     | 10/24 [01:09<01:35,  6.84s/it]                                               
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 6.25e-06, 'num_tokens': 48256.0, 'completions/mean_length': 18.0, 'completions/min_length': 18.0, 'completions/max_length': 18.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 18.0, 'completions/min_terminated_length': 18.0, 'completions/max_terminated_length': 18.0, 'rewards/util_label_reward/mean': 1.0, 'rewards/util_label_reward/std': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.00856857281178236, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.42}
+[1A
+[1A 42%|████▏     | 10/24 [01:09<01:35,  6.84s/it]
+[1A 46%|████▌     | 11/24 [01:15<01:28,  6.81s/it]                                               
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 5.833333333333334e-06, 'num_tokens': 52816.0, 'completions/mean_length': 19.0, 'completions/min_length': 19.0, 'completions/max_length': 19.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 19.0, 'completions/min_terminated_length': 19.0, 'completions/max_terminated_length': 19.0, 'rewards/util_label_reward/mean': 1.0, 'rewards/util_label_reward/std': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.0020479655358940363, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.46}
+[1A
+[1A 46%|████▌     | 11/24 [01:15<01:28,  6.81s/it]
+[1A 50%|█████     | 12/24 [01:22<01:19,  6.66s/it]
+[1A                                               
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 5.416666666666667e-06, 'num_tokens': 57448.0, 'completions/mean_length': 16.0, 'completions/min_length': 16.0, 'completions/max_length': 16.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 16.0, 'completions/min_terminated_length': 16.0, 'completions/max_terminated_length': 16.0, 'rewards/util_label_reward/mean': 1.0, 'rewards/util_label_reward/std': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.007800097577273846, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.5}
+[1A
+[1A 50%|█████     | 12/24 [01:22<01:19,  6.66s/it]
+[1A 54%|█████▍    | 13/24 [01:28<01:12,  6.59s/it]                                               
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 5e-06, 'num_tokens': 62192.0, 'completions/mean_length': 16.0, 'completions/min_length': 16.0, 'completions/max_length': 16.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 16.0, 'completions/min_terminated_length': 16.0, 'completions/max_terminated_length': 16.0, 'rewards/util_label_reward/mean': 1.0, 'rewards/util_label_reward/std': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.013668140396475792, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.54}
+[1A
+[1A 54%|█████▍    | 13/24 [01:28<01:12,  6.59s/it]
+[1A 58%|█████▊    | 14/24 [01:35<01:07,  6.76s/it]                                               
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 4.583333333333333e-06, 'num_tokens': 67560.0, 'completions/mean_length': 18.0, 'completions/min_length': 18.0, 'completions/max_length': 18.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 18.0, 'completions/min_terminated_length': 18.0, 'completions/max_terminated_length': 18.0, 'rewards/util_label_reward/mean': 0.0, 'rewards/util_label_reward/std': 0.0, 'reward': 0.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.0025471162516623735, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.58}
+[1A
+[1A 58%|█████▊    | 14/24 [01:35<01:07,  6.76s/it]
+[1A 62%|██████▎   | 15/24 [01:42<00:59,  6.62s/it]                                               
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 4.166666666666667e-06, 'num_tokens': 71856.0, 'completions/mean_length': 17.0, 'completions/min_length': 17.0, 'completions/max_length': 17.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 17.0, 'completions/min_terminated_length': 17.0, 'completions/max_terminated_length': 17.0, 'rewards/util_label_reward/mean': 1.0, 'rewards/util_label_reward/std': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.0012743043480440974, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.62}
+[1A
+[1A 62%|██████▎   | 15/24 [01:42<00:59,  6.62s/it]
+[1A 67%|██████▋   | 16/24 [02:25<02:20, 17.55s/it]
+[1A                                               
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 3.7500000000000005e-06, 'num_tokens': 78187.0, 'completions/mean_length': 237.375, 'completions/min_length': 174.0, 'completions/max_length': 323.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 237.375, 'completions/min_terminated_length': 174.0, 'completions/max_terminated_length': 323.0, 'rewards/util_label_reward/mean': 0.0, 'rewards/util_label_reward/std': 0.0, 'reward': 0.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.4537971653044224, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.67}
+[1A
+[1A 67%|██████▋   | 16/24 [02:25<02:20, 17.55s/it]
+[1A 71%|███████   | 17/24 [02:31<01:39, 14.19s/it]                                               
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 3.3333333333333333e-06, 'num_tokens': 82139.0, 'completions/mean_length': 18.0, 'completions/min_length': 18.0, 'completions/max_length': 18.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 18.0, 'completions/min_terminated_length': 18.0, 'completions/max_terminated_length': 18.0, 'rewards/util_label_reward/mean': 1.0, 'rewards/util_label_reward/std': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.0030791470780968666, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.71}
+[1A
+[1A 71%|███████   | 17/24 [02:31<01:39, 14.19s/it]
+[1A 75%|███████▌  | 18/24 [02:37<01:11, 11.87s/it]                                               
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 2.916666666666667e-06, 'num_tokens': 86795.0, 'completions/mean_length': 16.0, 'completions/min_length': 16.0, 'completions/max_length': 16.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 16.0, 'completions/min_terminated_length': 16.0, 'completions/max_terminated_length': 16.0, 'rewards/util_label_reward/mean': 1.0, 'rewards/util_label_reward/std': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.0010629527969285846, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.75}
+[1A
+[1A 75%|███████▌  | 18/24 [02:37<01:11, 11.87s/it]
+[1A 79%|███████▉  | 19/24 [02:45<00:52, 10.53s/it]
+[1A                                               
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 2.5e-06, 'num_tokens': 92235.0, 'completions/mean_length': 20.0, 'completions/min_length': 20.0, 'completions/max_length': 20.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 20.0, 'completions/min_terminated_length': 20.0, 'completions/max_terminated_length': 20.0, 'rewards/util_label_reward/mean': 1.0, 'rewards/util_label_reward/std': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.003039703704416752, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.79}
+[1A
+[1A 79%|███████▉  | 19/24 [02:45<00:52, 10.53s/it]
+[1A 83%|████████▎ | 20/24 [03:24<01:16, 19.02s/it]
+[1A                                               
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 2.0833333333333334e-06, 'num_tokens': 98607.0, 'completions/mean_length': 200.5, 'completions/min_length': 16.0, 'completions/max_length': 287.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 200.5, 'completions/min_terminated_length': 16.0, 'completions/max_terminated_length': 287.0, 'rewards/util_label_reward/mean': 1.0, 'rewards/util_label_reward/std': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.28521742206066847, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.83}
+[1A
+[1A 83%|████████▎ | 20/24 [03:24<01:16, 19.02s/it]
+[1A 88%|████████▊ | 21/24 [03:30<00:45, 15.32s/it]                                               
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 1.6666666666666667e-06, 'num_tokens': 103423.0, 'completions/mean_length': 18.0, 'completions/min_length': 18.0, 'completions/max_length': 18.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 18.0, 'completions/min_terminated_length': 18.0, 'completions/max_terminated_length': 18.0, 'rewards/util_label_reward/mean': 1.0, 'rewards/util_label_reward/std': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.0018759425729513168, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.88}
+[1A
+[1A 88%|████████▊ | 21/24 [03:30<00:45, 15.32s/it]
+[1A 92%|█████████▏| 22/24 [03:37<00:25, 12.80s/it]                                               
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 1.25e-06, 'num_tokens': 108351.0, 'completions/mean_length': 19.0, 'completions/min_length': 19.0, 'completions/max_length': 19.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 19.0, 'completions/min_terminated_length': 19.0, 'completions/max_terminated_length': 19.0, 'rewards/util_label_reward/mean': 1.0, 'rewards/util_label_reward/std': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.006178676150739193, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.92}
+[1A
+[1A 92%|█████████▏| 22/24 [03:37<00:25, 12.80s/it]
+[1A 96%|█████████▌| 23/24 [04:17<00:20, 20.78s/it]                                               
+{'loss': 0.0, 'grad_norm': 0.4804396629333496, 'learning_rate': 8.333333333333333e-07, 'num_tokens': 114820.0, 'completions/mean_length': 250.625, 'completions/min_length': 218.0, 'completions/max_length': 292.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 250.625, 'completions/min_terminated_length': 218.0, 'completions/max_terminated_length': 292.0, 'rewards/util_label_reward/mean': 0.875, 'rewards/util_label_reward/std': 0.3535533845424652, 'reward': 0.875, 'reward_std': 0.3535533845424652, 'frac_reward_zero_std': 0.0, 'entropy': 0.5349897742271423, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.96}
+[1A
+[1A 96%|█████████▌| 23/24 [04:17<00:20, 20.78s/it]
+[1A100%|██████████| 24/24 [04:23<00:00, 16.60s/it]                                               
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 4.1666666666666667e-07, 'num_tokens': 119700.0, 'completions/mean_length': 19.0, 'completions/min_length': 19.0, 'completions/max_length': 19.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 19.0, 'completions/min_terminated_length': 19.0, 'completions/max_terminated_length': 19.0, 'rewards/util_label_reward/mean': 1.0, 'rewards/util_label_reward/std': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.024968212470412254, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 1.0}
+[1A
+[1A100%|██████████| 24/24 [04:23<00:00, 16.60s/it]                                               
+{'train_runtime': 272.6663, 'train_samples_per_second': 0.704, 'train_steps_per_second': 0.088, 'train_loss': 1.0865430037180583e-09, 'epoch': 1.0}
+[1A
+[1A100%|██████████| 24/24 [04:32<00:00, 16.60s/it]100%|██████████| 24/24 [04:32<00:00, 11.36s/it]
+info: {"eos_token": "<|im_end|>", "eos_token_id": 151645, "max_prompt_tokens": 660, "mean_prompt_tokens": 578.8, "n_prompts": 24, "sampling": {"temperature": 1.0, "top_p": 0.95, "top_k": 50}, "label": "util_label", "model_dtype": "torch.bfloat16", "stop_reason": "max_steps", "minutes": 4.7, "step_times": [17.2, 23.8, 30.2, 36.9, 44.0, 50.6, 57.5, 64.8, 71.8, 78.3, 85.0, 91.3, 97.8, 104.9, 111.2, 154.2, 160.5, 167.0, 174.4, 213.2, 219.9, 226.8, 266.2, 273.1], "cuda_max_mem_gb": 15.5}
+{'completions/mean_length': 19.0, 'completions/clipped_ratio': 0.0, 'reward': 0.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'step': 1}
+{'completions/mean_length': 17.0, 'completions/clipped_ratio': 0.0, 'reward': 0.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'step': 2}
+{'completions/mean_length': 16.0, 'completions/clipped_ratio': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'step': 3}
+{'completions/mean_length': 19.0, 'completions/clipped_ratio': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'step': 4}
+{'completions/mean_length': 19.0, 'completions/clipped_ratio': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'step': 5}
+{'completions/mean_length': 18.0, 'completions/clipped_ratio': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'step': 6}
+{'completions/mean_length': 19.0, 'completions/clipped_ratio': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'step': 7}
+{'completions/mean_length': 21.0, 'completions/clipped_ratio': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'step': 8}
+{'completions/mean_length': 20.0, 'completions/clipped_ratio': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'step': 9}
+{'completions/mean_length': 18.0, 'completions/clipped_ratio': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'step': 10}
+{'completions/mean_length': 19.0, 'completions/clipped_ratio': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'step': 11}
+{'completions/mean_length': 16.0, 'completions/clipped_ratio': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'step': 12}
+{'completions/mean_length': 16.0, 'completions/clipped_ratio': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'step': 13}
+{'completions/mean_length': 18.0, 'completions/clipped_ratio': 0.0, 'reward': 0.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'step': 14}
+{'completions/mean_length': 17.0, 'completions/clipped_ratio': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'step': 15}
+{'completions/mean_length': 237.375, 'completions/clipped_ratio': 0.0, 'reward': 0.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'step': 16}
+{'completions/mean_length': 18.0, 'completions/clipped_ratio': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'step': 17}
+{'completions/mean_length': 16.0, 'completions/clipped_ratio': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'step': 18}
+{'completions/mean_length': 20.0, 'completions/clipped_ratio': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'step': 19}
+{'completions/mean_length': 200.5, 'completions/clipped_ratio': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'step': 20}
+{'completions/mean_length': 18.0, 'completions/clipped_ratio': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'step': 21}
+{'completions/mean_length': 19.0, 'completions/clipped_ratio': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'step': 22}
+{'completions/mean_length': 250.625, 'completions/clipped_ratio': 0.0, 'reward': 0.875, 'reward_std': 0.354, 'frac_reward_zero_std': 0.0, 'step': 23}
+{'completions/mean_length': 19.0, 'completions/clipped_ratio': 0.0, 'reward': 1.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'step': 24}
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/raphaelkhalid/main/ap-sHqdINOrF15cbWM2KlIxxG
