@@ -3,8 +3,8 @@
 Smoke test (tiny model, a few steps):
     modal run train_grpo.py --model Qwen/Qwen3-0.6B --label util_label --max-steps 6 --n-prompts 32 --out runs/grpo_smoke
 
-Real run (RL-U):
-    modal run train_grpo.py --model Qwen/Qwen3-4B-Instruct-2507 --label util_label --max-steps 300 --out runs/rl_u_seed0
+Real run (RL-U): 8 generations, 1024 completion tokens (320 truncated every 4B sample in the smoke run)
+    modal run train_grpo.py --model Qwen/Qwen3-4B-Instruct-2507 --label util_label --max-steps 300 --n-prompts 873 --out runs/rl_u_seed0
 """
 
 from __future__ import annotations
@@ -71,7 +71,7 @@ def train(model_id: str, rows: list[dict], label: str, max_steps: int, run_name:
 @app.local_entrypoint()
 def main(model: str = "Qwen/Qwen3-0.6B", label: str = "util_label", max_steps: int = 6, n_prompts: int = 32,
          data: str = "data/llm/final/train.jsonl", out: str = "runs/grpo_smoke", seed: int = 0,
-         num_generations: int = 4, max_completion: int = 384, lr: float = 1e-5):
+         num_generations: int = 8, max_completion: int = 1024, lr: float = 1e-5):
     rows = [json.loads(l) for l in Path(data).read_text(encoding="utf-8").splitlines() if l.strip()][:n_prompts]
     run_name = Path(out).name
     print(f"GRPO {model} | label={label} | steps={max_steps} | prompts={len(rows)} | gens={num_generations}")
