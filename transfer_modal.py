@@ -135,7 +135,9 @@ def parse_tool_calls(text: str) -> tuple[list[dict], str]:
             args = obj.get("arguments", {})
             if isinstance(args, str):
                 args = json.loads(args)
-            calls.append({"name": obj["name"], "arguments": args})
+            if not isinstance(args, dict):  # e.g. {"arguments": 6}: treated as a malformed call
+                raise TypeError(f"arguments is {type(args).__name__}")
+            calls.append({"name": str(obj["name"]), "arguments": args})
         except (ValueError, KeyError, TypeError) as e:
             err = f"malformed tool call: {e}"
     return calls, err

@@ -1,0 +1,34 @@
+{
+  "model": "Qwen/Qwen3-4B-Instruct-2507",
+  "split": "train",
+  "n_items": 873,
+  "samples": 8,
+  "temperature": 0.7,
+  "thinking": "default",
+  "positive_control": false,
+  "prefix_file": "data/transfer/deont_instruction.json",
+  "reason_first": true,
+  "data": "data\\llm\\final\\train.jsonl",
+  "top_p": 0.95,
+  "top_k": -1,
+  "lora": "",
+  "summary": {
+    "n": 6984,
+    "invalid_rate": 0.02276632302405498,
+    "reasons": {
+      "abstain_tool": 3261,
+      "tool_call": 3564,
+      "truncated": 156,
+      "unknown_tool": 3
+    },
+    "act_rate_by_cell": {
+      "dilemma": 0.506,
+      "pareto": 0.888,
+      "worse": 0.157
+    },
+    "balanced_accuracy": {
+      "util": 0.734,
+      "deont": 0.754
+    }
+  }
+}

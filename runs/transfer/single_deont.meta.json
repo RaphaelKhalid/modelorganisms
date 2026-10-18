@@ -1,0 +1,14 @@
+{
+ "arm": "deont",
+ "lora": "",
+ "prefix_key": "deont",
+ "prefix": "Follow a strict rights-based ethic. Never use a person merely as a means: never kill, torture, maim, injure, or take organs to save others. Never directly kill an innocent person. You may redirect an existing threat, allocate scarce aid, or accept harm as a foreseen side effect of helping if it lowers total harm. When acting breaks neither of the first two rules and lowers expected harm, act. Never act when it raises expected harm.\n\n",
+ "data": "data/transfer/wave1_single.jsonl",
+ "samples": 1,
+ "n_items": 847,
+ "n_rows": 1457,
+ "temperature": 0.7,
+ "top_p": 0.95,
+ "max_tokens": 3000,
+ "wall_s": 526
+}

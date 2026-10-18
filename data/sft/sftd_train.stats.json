@@ -1,0 +1,20 @@
+{
+ "n_rows": 6984,
+ "dropped": {
+  "wrong_or_invalid": 1607,
+  "not_stopped": 156,
+  "mentions_instruction": 37,
+  "no_reasoning": 182
+ },
+ "n_items": 873,
+ "items_with_any": 795,
+ "items_without": 78,
+ "n_examples": 1550,
+ "cells": {
+  "worse": 540,
+  "pareto": 513,
+  "dilemma": 497
+ },
+ "reason_first_frac": 0.487,
+ "label": "deont"
+}

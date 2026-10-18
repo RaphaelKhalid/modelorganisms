@@ -81,6 +81,41 @@ def bootstrap(a: list[dict], b: list[dict], n_boot: int = 2000, seed: int = 0) -
             "n_archetypes": len(archs)}
 
 
+def cluster_bootstrap(groups: dict[str, dict[str, list[float]]], stat, n_boot: int = 2000, seed: int = 0) -> dict:
+    """Generic cluster bootstrap for the transfer evals.
+
+    groups: {group name: {cluster id: [unit values]}}. Each group's clusters are resampled with replacement on their
+    own (e.g. the 'lives-saved' and 'neutral' cells of one arm, or one arm's and another's paired differences).
+    stat: function {group name: [values]} -> float. Returns the point estimate and percentile 95% CI.
+    A group with a single cluster is resampled at the unit level instead."""
+    rng = random.Random(seed)
+
+    def flat(sel):
+        return {g: [v for c in cs for v in groups[g][c]] for g, cs in sel.items()}
+
+    full = {g: list(cs) for g, cs in groups.items()}
+    est = stat(flat(full))
+    draws = []
+    for _ in range(n_boot):
+        sample = {}
+        for g, cs in groups.items():
+            keys = sorted(cs)
+            if len(keys) >= 2:
+                sample[g] = [v for k in (rng.choice(keys) for _ in keys) for v in cs[k]]
+            else:
+                vals = [v for k in keys for v in cs[k]]
+                sample[g] = [rng.choice(vals) for _ in vals]
+        try:
+            draws.append(stat(sample))
+        except ZeroDivisionError:
+            continue
+    draws.sort()
+    lo, hi = draws[int(0.025 * len(draws))], draws[max(int(0.975 * len(draws)) - 1, 0)]
+    return {"est": round(est, 4), "ci95": [round(lo, 4), round(hi, 4)],
+            "n_clusters": {g: len(cs) for g, cs in groups.items()},
+            "n_units": {g: sum(len(v) for v in cs.values()) for g, cs in groups.items()}}
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--a", required=True, help="reference rows (e.g. base)")

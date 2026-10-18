@@ -1,0 +1,11 @@
+[
+ {
+  "arm": "sftd",
+  "items": 13,
+  "rows_replaced": 39,
+  "untruncated_identical": 0,
+  "untruncated_changed": 14,
+  "still_truncated": 24,
+  "judgments_dropped": 0
+ }
+]

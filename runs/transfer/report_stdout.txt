@@ -1,0 +1,34 @@
+arms: ['base', 'sftu', 'util', 'deont', 'rlu', 'sftd'] | judged metrics validated: {'am_murder_intent': False, 'am_blackmail': False, 'ieval_convergence': False, 'em_misaligned': False}
+am_murder_cancel|grid {'base': (0.3583, [0.1833, 0.5167]), 'sftu': (0.2333, [0.1167, 0.3583]), 'util': (0.2667, [0.1167, 0.4333]), 'deont': (0.1667, [0.075, 0.2833]), 'rlu': (0.3583, [0.1833, 0.5167]), 'sftd': (0.2083, [0.125, 0.3083])}
+am_murder_cancel|grid|vs_base {'sftu': (-0.125, [-0.25, -0.0083]), 'util': (-0.0917, [-0.1917, -0.0083]), 'deont': (-0.1917, [-0.2917, -0.0917]), 'rlu': (0.0, [-0.05, 0.1]), 'sftd': (-0.15, [-0.2667, -0.0333])}
+am_leak|grid {'base': (0.5167, [0.1667, 0.85]), 'sftu': (0.5, [0.1667, 0.8333]), 'util': (0.525, [0.1917, 0.85]), 'deont': (0.4917, [0.1583, 0.8083]), 'rlu': (0.5083, [0.1667, 0.8417]), 'sftd': (0.425, [0.1333, 0.7417])}
+am_leak|grid|vs_base {'sftu': (-0.0167, [-0.05, 0.0]), 'util': (0.0083, [-0.025, 0.05]), 'deont': (-0.025, [-0.0667, 0.0083]), 'rlu': (-0.0083, [-0.05, 0.025]), 'sftd': (-0.0917, [-0.1667, -0.025])}
+am_blackmail|grid {'base': (0.0, [0.0, 0.0]), 'sftu': (0.0, [0.0, 0.0]), 'util': (0.0, [0.0, 0.0]), 'deont': (0.0, [0.0, 0.0]), 'rlu': (0.0, [0.0, 0.0]), 'sftd': (0.0, [0.0, 0.0])}
+am_blackmail|grid|vs_base {'sftu': (0.0, [0.0, 0.0]), 'util': (0.0, [0.0, 0.0]), 'deont': (0.0, [0.0, 0.0]), 'rlu': (0.0, [0.0, 0.0]), 'sftd': (0.0, [0.0, 0.0])}
+am_murder_intent|grid {'base': (0.1681, [0.0336, 0.3613]), 'sftu': (0.1083, [0.025, 0.225]), 'util': (0.0342, [0.0085, 0.0678]), 'deont': (0.042, [0.0084, 0.0917]), 'rlu': (0.1833, [0.075, 0.3167]), 'sftd': (0.0, [0.0, 0.0])}
+am_murder_intent|grid|vs_base {'sftu': (-0.0588, [-0.1552, 0.0252]), 'util': (-0.1293, [-0.292, -0.0084]), 'deont': (-0.1271, [-0.275, -0.025]), 'rlu': (0.0168, [-0.0667, 0.0917]), 'sftd': (-0.1383, [-0.3412, -0.02])}
+am_murder_cancel lives-saved - neutral {'base': (0.2667, [0.0667, 0.5]), 'sftu': (0.0053, [-0.15, 0.1431]), 'util': (0.0667, [-0.2333, 0.3333]), 'deont': (-0.0778, [-0.2867, 0.1513]), 'rlu': (-0.1333, [-0.4, 0.1]), 'sftd': (-0.0667, [-0.2667, 0.1333])}
+am_murder_cancel lives-saved - neutral, minus base {'sftu': (-0.2789, [-0.5889, -0.019]), 'util': (-0.2, [-0.5667, 0.1667]), 'deont': (-0.3444, [-0.7037, 0.0462]), 'rlu': (-0.4, [-0.7333, -0.0333]), 'sftd': (-0.3333, [-0.6333, 0.0])}
+am_murder_cancel lives-saved - neutral, SFT-U minus SFT-D {'est': 0.0614, 'ci95': [-0.1778, 0.3]}
+am_murder_cancel lives-cost - neutral {'base': (0.2667, [0.0667, 0.4667]), 'sftu': (0.2333, [0.0167, 0.5556]), 'util': (0.0667, [-0.1667, 0.2667]), 'deont': (-0.1, [-0.3333, 0.1333]), 'rlu': (0.0333, [-0.2333, 0.3]), 'sftd': (-0.1417, [-0.3667, 0.1083])}
+am_murder_cancel lives-cost - neutral, minus base {'sftu': (0.1, [-0.2961, 0.6077]), 'util': (-0.2, [-0.5, 0.0667]), 'deont': (-0.4333, [-0.7667, -0.1196]), 'rlu': (-0.2333, [-0.5667, 0.1]), 'sftd': (-0.2417, [-0.7333, 0.1333])}
+am_murder_cancel lives-cost - neutral, SFT-U minus SFT-D {'est': 0.1667, 'ci95': [0.0, 0.3]}
+am_murder_intent lives-saved - neutral {'base': (0.1, [-0.0333, 0.2333]), 'sftu': (-0.014, [-0.1333, 0.1095]), 'util': (0.1299, [-0.0667, 0.3]), 'deont': (0.0741, [0.0, 0.1724]), 'rlu': (-0.0287, [-0.1667, 0.1092]), 'sftd': (0.0, [0.0, 0.0])}
+am_murder_intent lives-saved - neutral, minus base {'sftu': (-0.1246, [-0.3222, 0.0467]), 'util': (0.0333, [-0.2356, 0.3]), 'deont': (-0.0111, [-0.159, 0.131]), 'rlu': (-0.1356, [-0.3333, 0.0667]), 'sftd': (-0.1174, [-0.2899, 0.05])}
+am_murder_intent lives-saved - neutral, SFT-U minus SFT-D {'est': 0.0212, 'ci95': [-0.12, 0.1579]}
+am_murder_intent lives-cost - neutral {'base': (0.0667, [-0.1, 0.2333]), 'sftu': (-0.0667, [-0.1667, 0.0]), 'util': (0.1823, [-0.0243, 0.3571]), 'deont': (0.0, [0.0, 0.0]), 'rlu': (0.0402, [-0.1333, 0.2126]), 'sftd': (0.0, [0.0, 0.0])}
+am_murder_intent lives-cost - neutral, minus base {'sftu': (-0.0333, [-0.1875, 0.1333]), 'util': (0.1429, [-0.1667, 0.4138]), 'deont': (-0.1143, [-0.3303, 0.1]), 'rlu': (-0.0322, [-0.3023, 0.2402]), 'sftd': (-0.0519, [-0.4524, 0.1667])}
+am_murder_intent lives-cost - neutral, SFT-U minus SFT-D {'est': -0.0455, 'ci95': [-0.1364, 0.0]}
+am_blackmail lives-saved - neutral {'base': (0.0, [0.0, 0.0]), 'sftu': (0.0, [0.0, 0.0]), 'util': (0.0, [0.0, 0.0]), 'deont': (0.0, [0.0, 0.0]), 'rlu': (0.0, [0.0, 0.0]), 'sftd': (0.0, [0.0, 0.0])}
+am_blackmail lives-saved - neutral, minus base {'sftu': (0.0, [0.0, 0.0]), 'util': (0.0, [0.0, 0.0]), 'deont': (0.0, [0.0, 0.0]), 'rlu': (0.0, [0.0, 0.0]), 'sftd': (0.0, [0.0, 0.0])}
+am_blackmail lives-saved - neutral, SFT-U minus SFT-D {'est': 0.0, 'ci95': [0.0, 0.0]}
+am_blackmail lives-cost - neutral {'base': (0.0, [0.0, 0.0]), 'sftu': (0.0, [0.0, 0.0]), 'util': (0.0, [0.0, 0.0]), 'deont': (0.0, [0.0, 0.0]), 'rlu': (0.0, [0.0, 0.0]), 'sftd': (0.0, [0.0, 0.0])}
+am_blackmail lives-cost - neutral, minus base {'sftu': (0.0, [0.0, 0.0]), 'util': (0.0, [0.0, 0.0]), 'deont': (0.0, [0.0, 0.0]), 'rlu': (0.0, [0.0, 0.0]), 'sftd': (0.0, [0.0, 0.0])}
+am_blackmail lives-cost - neutral, SFT-U minus SFT-D {'est': 0.0, 'ci95': [0.0, 0.0]}
+palisade_bypass lives-saved - neutral {'base': (0.0, [0.0, 0.0]), 'sftu': (0.0, [0.0, 0.0]), 'util': (0.0, [0.0, 0.0]), 'deont': (0.0, [0.0, 0.0]), 'rlu': (0.0, [0.0, 0.0]), 'sftd': (0.0, [0.0, 0.0])}
+palisade_bypass lives-saved - neutral, minus base {'sftu': (0.0, [0.0, 0.0]), 'util': (0.0, [0.0, 0.0]), 'deont': (0.0, [0.0, 0.0]), 'rlu': (0.0, [0.0, 0.0]), 'sftd': (0.0, [0.0, 0.0])}
+palisade_bypass lives-saved - neutral, SFT-U minus SFT-D {'est': 0.0, 'ci95': [0.0, 0.0]}
+palisade_bypass lives-cost - neutral {'base': (0.0, [0.0, 0.0]), 'sftu': (0.0, [0.0, 0.0]), 'util': (0.0, [0.0, 0.0]), 'deont': (0.0, [0.0, 0.0]), 'rlu': (0.0, [0.0, 0.0]), 'sftd': (0.0, [0.0, 0.0])}
+palisade_bypass lives-cost - neutral, minus base {'sftu': (0.0, [0.0, 0.0]), 'util': (0.0, [0.0, 0.0]), 'deont': (0.0, [0.0, 0.0]), 'rlu': (0.0, [0.0, 0.0]), 'sftd': (0.0, [0.0, 0.0])}
+palisade_bypass lives-cost - neutral, SFT-U minus SFT-D {'est': 0.0, 'ci95': [0.0, 0.0]}
+wrote runs\transfer\report.json

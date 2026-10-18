@@ -1,0 +1,38 @@
+✓ Initialized. View run at 
+https://modal.com/apps/raphaelkhalid/main/ap-RJQtOa2qmLuUNRxxXjximD
+✓ Created objects.
+├── ✓ Uploaded 
+│   C:\Users\rapha\OneDrive\Desktop\Claude\modelorganisms\train_sft.py
+├── ✓ Uploaded PythonPackage:organism
+└── ✓ Created Function train.
+SFT Qwen/Qwen3-4B-Instruct-2507 | 1550 examples | epochs=2 lr=0.0001 grad_accum=16 max_steps=all | gpu=L40S | time cap 40.0 min, hard timeout 55 min
+setup: {"n_examples": 1550, "max_tokens": 1607, "mean_tokens": 904.4, "answer_tokens": 527808, "end_token_id": 151645, "epochs": 2, "lr": 0.0001, "grad_accum": 16, "planned_steps": 194}
+`torch_dtype` is deprecated! Use `dtype` instead!
+
+[1ALoading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]
+[1ALoading checkpoint shards:  33%|███▎      | 1/3 [00:02<00:04,  2.01s/it]
+[1ALoading checkpoint shards:  67%|██████▋   | 2/3 [00:03<00:01,  2.00s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:04<00:00,  1.35s/it]
+{'step': 1, 'epoch': 1, 'loss': 0.9655, 'grad_norm': 1.187, 'lr': 1.1111111111111112e-05, 'minutes': 0.23}
+{'step': 10, 'epoch': 1, 'loss': 0.7841, 'grad_norm': 1.028, 'lr': 9.999279082014232e-05, 'minutes': 0.9}
+{'step': 20, 'epoch': 1, 'loss': 0.5403, 'grad_norm': 0.482, 'lr': 9.913020186795967e-05, 'minutes': 1.64}
+{'step': 30, 'epoch': 1, 'loss': 0.3948, 'grad_norm': 0.458, 'lr': 9.685422645916918e-05, 'minutes': 2.38}
+{'step': 40, 'epoch': 1, 'loss': 0.3531, 'grad_norm': 0.386, 'lr': 9.323034026242377e-05, 'minutes': 3.12}
+{'step': 50, 'epoch': 1, 'loss': 0.3335, 'grad_norm': 0.354, 'lr': 8.836279588561083e-05, 'minutes': 3.87}
+{'step': 60, 'epoch': 1, 'loss': 0.4057, 'grad_norm': 0.363, 'lr': 8.239162371813551e-05, 'minutes': 4.65}
+{'step': 70, 'epoch': 1, 'loss': 0.376, 'grad_norm': 0.383, 'lr': 7.548860351157027e-05, 'minutes': 5.42}
+{'step': 80, 'epoch': 1, 'loss': 0.3378, 'grad_norm': 0.348, 'lr': 6.785232258896077e-05, 'minutes': 6.18}
+{'step': 90, 'epoch': 1, 'loss': 0.3782, 'grad_norm': 0.372, 'lr': 5.970246284910876e-05, 'minutes': 6.93}
+{'step': 100, 'epoch': 2, 'loss': 0.3189, 'grad_norm': 0.291, 'lr': 5.1273480918317554e-05, 'minutes': 7.73}
+{'step': 110, 'epoch': 2, 'loss': 0.3364, 'grad_norm': 0.412, 'lr': 4.280786326012723e-05, 'minutes': 8.49}
+{'step': 120, 'epoch': 2, 'loss': 0.3157, 'grad_norm': 0.371, 'lr': 3.4549150281252636e-05, 'minutes': 9.24}
+{'step': 130, 'epoch': 2, 'loss': 0.3191, 'grad_norm': 0.369, 'lr': 2.6734930117495134e-05, 'minutes': 10.0}
+{'step': 140, 'epoch': 2, 'loss': 0.3381, 'grad_norm': 0.37, 'lr': 1.959000365565119e-05, 'minutes': 10.74}
+{'step': 150, 'epoch': 2, 'loss': 0.3192, 'grad_norm': 0.355, 'lr': 1.3319917421293182e-05, 'minutes': 11.48}
+{'step': 160, 'epoch': 2, 'loss': 0.3121, 'grad_norm': 0.413, 'lr': 8.105050379466333e-06, 'minutes': 12.19}
+{'step': 170, 'epoch': 2, 'loss': 0.2885, 'grad_norm': 0.397, 'lr': 4.095424760279454e-06, 'minutes': 12.91}
+{'step': 180, 'epoch': 2, 'loss': 0.3283, 'grad_norm': 0.352, 'lr': 1.4063901924895984e-06, 'minutes': 13.64}
+{'step': 190, 'epoch': 2, 'loss': 0.3103, 'grad_norm': 0.391, 'lr': 1.1530530469914259e-07, 'minutes': 14.39}
+info: {"n_examples": 1550, "max_tokens": 1607, "mean_tokens": 904.4, "answer_tokens": 527808, "end_token_id": 151645, "epochs": 2, "lr": 0.0001, "grad_accum": 16, "planned_steps": 194, "stop_reason": "done", "steps": 194, "minutes": 14.7, "cuda_max_mem_gb": 27.1, "saved": ["epoch1", "epoch2", "final", "log.jsonl"]}
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/raphaelkhalid/main/ap-RJQtOa2qmLuUNRxxXjximD

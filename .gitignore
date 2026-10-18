@@ -10,3 +10,6 @@ runs/openrouter/log.jsonl
 weights/
 # raw clones of public eval repos; extracted items live in data/transfer/*.jsonl
 data/transfer/src/
+runs/openrouter/transfer_log.jsonl
+runs/transfer/*.partial.jsonl
+runs/transfer/modal_billing_raw.json

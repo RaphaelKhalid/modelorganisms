@@ -1,0 +1,14 @@
+{
+ "arm": "rlu",
+ "lora": "rlu_seed0/final",
+ "prefix_key": "",
+ "prefix": "",
+ "data": "data/transfer/wave1_agent.jsonl",
+ "samples": 1,
+ "n_items": 33,
+ "n_rows": 180,
+ "temperature": 0.7,
+ "top_p": 0.95,
+ "max_tokens": 3000,
+ "wall_s": 911
+}

@@ -13,6 +13,12 @@ The design, predictions and validity rules are in [PREREG.md](PREREG.md), writte
 - First baselines on Modal: Qwen3-4B-Instruct is action-biased, not utilitarian, and even a utilitarian system prompt does not fix it without reasoning. See [REVIEW-2026-10-16.md](REVIEW-2026-10-16.md).
 - Not started yet: freezing the transfer evals, and the SFT / SDF / RL training arms (see the OPEN items in PREREG.md).
 
+## Transfer wave 1 (2026-10-18)
+
+Does the SFT-U organism carry over to public agentic-misalignment evals? See [PREREG-transfer.md](PREREG-transfer.md) and [REVIEW-2026-10-18-transfer.md](REVIEW-2026-10-18-transfer.md).
+- Short answer: no. The value stays in the trained format, with no broad misalignment.
+- Harness: `organism/transfer_items.py`, `organism/stakes.py`, `transfer_modal.py`, `organism/transfer_scoring.py`, `organism/transfer_judge.py`, `organism/transfer_report.py`.
+
 ## Layout
 
 | Path | What |

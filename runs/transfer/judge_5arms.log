@@ -1,0 +1,30 @@
+1764 judgments to run ($0.2067 spent of $5.00)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\rapha\OneDrive\Desktop\Claude\modelorganisms\organism\transfer_judge.py", line 182, in <module>
+    main()
+  File "C:\Users\rapha\OneDrive\Desktop\Claude\modelorganisms\organism\transfer_judge.py", line 178, in main
+    run(files, a.cap)
+  File "C:\Users\rapha\OneDrive\Desktop\Claude\modelorganisms\organism\transfer_judge.py", line 168, in run
+    list(ex.map(one, todo))
+  File "C:\Users\rapha\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\_base.py", line 619, in result_iterator
+    yield _result_or_cancel(fs.pop())
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rapha\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\_base.py", line 317, in _result_or_cancel
+    return fut.result(timeout)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rapha\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rapha\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\rapha\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rapha\OneDrive\Desktop\Claude\modelorganisms\organism\transfer_judge.py", line 160, in one
+    body = client.chat(model=JUDGE, messages=msgs, temperature=0.0, max_tokens=2000, json_mode=False,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rapha\OneDrive\Desktop\Claude\modelorganisms\organism\openrouter.py", line 127, in chat
+    raise APIError(last_error)
+organism.openrouter.APIError: HTTP 402: {'error': {'message': 'This request would exceed your available credits given your current in-flight requests. Retry after in-flight requests settle, or add credits.', 'code': 402, 'metadata': {'reason': 'in_flight_budget_exhausted', 'limit_source': 'openrouter_in_flight_budget', 'remedy_hint': 'Ret
