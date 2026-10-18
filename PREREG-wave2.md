@@ -1,8 +1,7 @@
-# Pre-registration, wave 2: where does SFT-U's utilitarianism stop transferring? (draft v0.2, 2026-10-18)
+# Pre-registration, wave 2: where does SFT-U's utilitarianism stop transferring? (v1, frozen 2026-10-18)
 
-Draft. It is frozen (v1) and committed before any model is run on wave-2 items. Changes after that go in the
-changelog with a date and reason. v0.2 incorporates an independent adversarial review of v0.1 (summary in the
-changelog).
+Frozen v1, committed before any model is run on wave-2 items. Changes after this go in the changelog with a date
+and reason. v0.2 incorporated an independent adversarial review of v0.1 (summary in the changelog).
 
 ## Why wave 2
 
@@ -157,7 +156,17 @@ The dataset list would reject deception, shutdown and AI words, which wave 2 nee
 ## Size and budget
 
 - **Full run:** 80 primary + 16 anchor archetypes = 96 archetypes × 3 cells × 5 rungs = 1,440 prompts × 2 samples = 2,880 answers per full arm. R4 has up to 3 turns.
-- **Budget, proposed:** Modal ≤ $12, OpenRouter ≤ $6, tracked in `runs/openrouter/wave2_log.jsonl`. Wave 1 spent $8.97 on Modal. The OpenRouter key limit must be raised first.
+- **Budget:** RunPod ≤ $6, OpenRouter ≤ $6, tracked in `runs/openrouter/wave2_log.jsonl` and RunPod billing reads.
+
+## Infrastructure
+- **Server.** One RunPod pod (an RTX 4090 or 3090 with stock, else the cheapest ≥ 24 GB GPU within the cap) runs the `vllm/vllm-openai:v0.10.1.1` image.
+  - That is the same vLLM version as wave 1 on Modal.
+  - It serves Qwen3-4B-Instruct-2507 through vLLM's OpenAI-compatible API, with `--enable-lora` and an API key.
+  - The SFT-U and SFT-D adapters load from a private Hugging Face repo on the user's account. SFT-D is fetched from the Modal volume first.
+- **Client.** A local harness sends every request with its own seed, `hash(item, sample, turn)`, and runs R4's up-to-3 turns.
+  - Wave 1 showed that vLLM seeds do not reproduce text across batch compositions. So arms are paired by item and sample, not by identical random streams.
+- **Pod lifetime.** A pod exists only while items are being run, and is deleted after each phase.
+- **Monitor.** A live dashboard at modelorganisms.raphaelkhalid.com (Cloudflare Worker + KV) shows progress, spend, the gate and results.
 
 ## Predictions (direction, written before data)
 
@@ -181,6 +190,7 @@ The dataset list would reject deception, shutdown and AI words, which wave 2 nee
 
 ## Changelog
 - 2026-10-18: draft v0.1.
+- 2026-10-18: **v1 frozen.** The only changes from v0.2 are infrastructure (RunPod instead of Modal, a local OpenAI-API client, the live monitor) and the budget (RunPod ≤ $6, OpenRouter ≤ $6). No metric, cell, rung, arm, gate or prediction changed. No wave-2 model has been run.
 - 2026-10-18: draft v0.2, after an independent adversarial review of v0.1. Changes:
   - **Cells:** "selfish with a 10% injury cost" replaced by **lives-worse** plus a **no-cost selfish** cell. The injury cost fell under labels.py's 0.5 margin, so the utilitarian label was AMBIGUOUS. And base's training-format action bias (worse-cell act 0.62–0.71) would have made the lives-vs-selfish gap mostly SFT-U's trained abstention.
   - **Counterbalancing:** which tool is the violation is now counterbalanced, as PREREG.md requires.
