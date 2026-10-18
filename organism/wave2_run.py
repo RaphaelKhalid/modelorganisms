@@ -35,6 +35,9 @@ END = ("<|im_end|>", "<|endoftext|>")
 
 
 def prefix_for(arm: str) -> str:
+    if arm.endswith("_rf"):  # v1.3: the instructed arms with the reason-first line SFT-U was distilled with
+        from organism.prompting import REASON_FIRST
+        return prefix_for(arm[:-3]) + REASON_FIRST
     if arm == "util":
         from modal_app import POSITIVE_CONTROL
         return POSITIVE_CONTROL
@@ -45,7 +48,8 @@ def prefix_for(arm: str) -> str:
     return ""
 
 
-ARMS = {"base": MODEL, "util": MODEL, "deont": MODEL, "rules": MODEL, "sftu": "sftu", "sftd": "sftd"}
+ARMS = {"base": MODEL, "util": MODEL, "deont": MODEL, "rules": MODEL, "sftu": "sftu", "sftd": "sftd",
+        "util_rf": MODEL, "deont_rf": MODEL, "rules_rf": MODEL}
 SFTD_RUNGS = ("R1", "R3")
 
 

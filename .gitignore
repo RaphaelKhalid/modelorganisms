@@ -19,3 +19,5 @@ runs/wave2/status.tmp
 runs/wave2/secrets*
 .wrangler/
 runs/wave2/server.json
+runs/openrouter/wave2_log.jsonl
+runs/openrouter/wave2_log.corrupt.txt

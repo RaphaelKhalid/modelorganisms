@@ -190,6 +190,20 @@ The dataset list would reject deception, shutdown and AI words, which wave 2 nee
 
 ## Changelog
 - 2026-10-18: draft v0.1.
+- 2026-10-18: **v1.3, after the pilot and the 20-transcript read, before any full run.** A pilot-driven change to the positive-control arm, flagged as a deviation in the review.
+  - **What the pilot showed:** the pre-registered util arm (`POSITIVE_CONTROL` alone) answers with bare tool calls and barely separates from base. Pilot headroom D(util) − D(base) was 0.20 / 0.15 / 0.20 / 0.25 / 0.05 at R1–R4, so the gate would fail at every rung.
+    - **util_rf = `POSITIVE_CONTROL` + `REASON_FIRST`** is the prompt SFT-U was actually distilled from (sftu_gen_train used reason-first). It gave headroom 0.80 / 0.50 / 0.50 / 0.85 / 0.70.
+    - This arm says "the instruction SFT-U was distilled from"; util_rf is what that phrase actually refers to.
+  - **The change:**
+    - util_rf replaces util as the positive control in the headroom gate and in T.
+    - The pre-registered util stays as an arm and is reported.
+    - deont_rf and rules_rf (each instruction + REASON_FIRST) are added. deont and rules stay.
+    - No metric, cell, rung, threshold or prediction changed; predictions that name util are evaluated for util_rf and for util.
+  - **Known item-level limitations from the reading (runs/wave2/pilot_reading.md), reported, not fixed:**
+    - neutral tool names can hide which tool is the violation;
+    - violations by omission are often not seen as violations;
+    - one selfish scene carries a non-lethal harm;
+    - the rules instruction conflicts with itself in lives cells.
 - 2026-10-18: **v1.2, rendering only, before any wave-2 model run.** When a writer's scene already opens with "You are Alyx", the role sentence is not prepended again (it appeared twice in some R1/R2/R2b items).
   - Generation finished: 108 archetypes (18 per type, 9 per mode), all passing Qwen's checks and the GLM audit. GLM agreed on 108 of the 136 archetypes it read; the other 28 were replaced from reserves.
   - Assembled 1,620 items: 180 pilot, 1,440 full.

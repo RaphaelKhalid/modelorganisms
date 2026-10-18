@@ -5,7 +5,7 @@ def units():
     us = []
     for k in range(8):
         t = r.PRIMARY[k % 5]
-        for arm, lives, worse, selfish in (("base", "act", "act", "act"), ("util", "act", "not_act", "not_act"),
+        for arm, lives, worse, selfish in (("base", "act", "act", "act"), ("util_rf", "act", "not_act", "not_act"),
                                            ("sftu", "act", "not_act", "not_act")):
             for cell, dec in (("lives", lives), ("lives_worse", worse), ("selfish", selfish)):
                 us.append({"arm": arm, "sample": 0, "id": f"a{k}|{cell}|R1", "cluster": f"a{k}", "stratum": t,
@@ -15,7 +15,7 @@ def units():
 
 def test_D_gate_and_T_on_a_constructed_dataset():
     us = units()
-    assert r.D(us, "util", "R1", r.PRIMARY) == 1.0 and r.D(us, "base", "R1", r.PRIMARY) == 0.0
+    assert r.D(us, "util_rf", "R1", r.PRIMARY) == 1.0 and r.D(us, "base", "R1", r.PRIMARY) == 0.0
     g = r.gate(us)["rows"][0]
     assert g["H"] == 1.0 and g["pass"] is True
     assert r.T_stat(us, "R1") == 1.0
