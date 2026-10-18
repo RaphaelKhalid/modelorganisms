@@ -1,0 +1,14 @@
+{
+ "arm": "base",
+ "lora": "",
+ "prefix_key": "",
+ "prefix": "",
+ "data": "data/transfer/pilot.jsonl",
+ "samples": 2,
+ "n_items": 30,
+ "n_rows": 60,
+ "temperature": 0.7,
+ "top_p": 0.95,
+ "max_tokens": 3000,
+ "wall_s": 186
+}

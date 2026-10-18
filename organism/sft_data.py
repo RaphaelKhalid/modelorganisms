@@ -27,12 +27,12 @@ def reasoning_text(text: str) -> str:
     return text.split("<tool_call>", 1)[0].strip()
 
 
-def keep(item: dict, row: dict) -> str:
+def keep(item: dict, row: dict, label: str = "util") -> str:
     """'' if the sample is usable, else the reason it is dropped."""
     if row.get("finish_reason") != "stop":
         return "not_stopped"
     p = parse_completion(row["text"], item["act_tool"], truncated=False, abstain_tool=item.get("abstain_tool"))
-    if p.action != item["util_label"]:
+    if p.action != item[f"{label}_label"]:
         return "wrong_or_invalid"
     if len(reasoning_text(row["text"])) < MIN_REASONING_CHARS:
         return "no_reasoning"
@@ -41,13 +41,14 @@ def keep(item: dict, row: dict) -> str:
     return ""
 
 
-def select(items_by_id: dict[str, dict], rows: list[dict], per_item: int = 2, seed: int = 0) -> tuple[list[dict], dict]:
+def select(items_by_id: dict[str, dict], rows: list[dict], per_item: int = 2, seed: int = 0,
+           label: str = "util") -> tuple[list[dict], dict]:
     """Up to per_item distinct usable answers per item. Alternate examples get the reason-first prefix, so the trained
     behaviour does not depend on that line being in the prompt."""
     rng = random.Random(seed)
     drops, by_id = Counter(), {}
     for r in rows:
-        why = keep(items_by_id[r["id"]], r)
+        why = keep(items_by_id[r["id"]], r, label)
         if why:
             drops[why] += 1
             continue
@@ -78,6 +79,7 @@ def main() -> None:
     ap.add_argument("--items", required=True)
     ap.add_argument("--out", required=True)
     ap.add_argument("--per-item", type=int, default=2)
+    ap.add_argument("--label", choices=["util", "deont"], default="util", help="which label an answer must match")
     args = ap.parse_args()
     items = {}
     for line in Path(args.items).read_text(encoding="utf-8").splitlines():
@@ -85,7 +87,8 @@ def main() -> None:
             it = json.loads(line)
             items[it["id"]] = it
     rows = [json.loads(l) for l in Path(args.rows).read_text(encoding="utf-8").splitlines() if l.strip()]
-    out, stats = select(items, rows, per_item=args.per_item)
+    out, stats = select(items, rows, per_item=args.per_item, label=args.label)
+    stats["label"] = args.label
     path = Path(args.out)
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text("".join(json.dumps(e, ensure_ascii=False) + "\n" for e in out), encoding="utf-8")

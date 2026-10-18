@@ -130,9 +130,14 @@ def main(model: str = "Qwen/Qwen3-0.6B", split: str = "val", n: int = 30, sample
          temperature: float = 0.7, max_tokens: int = 1024, thinking: str = "off",
          positive_control: bool = False, out: str = "runs/smoke.jsonl", data: str = "", reason: bool = False,
          top_p: float = 0.95, top_k: int = -1, lora: str = "", gpu: str = GPU, timeout_min: int = TIMEOUT_S // 60,
-         chunk: int = 0):
+         chunk: int = 0, prefix_file: str = ""):
     """chunk > 0 splits the items into calls of that many items; each call's raw rows are appended to
-    <out>.partial.jsonl as soon as it returns, so a failed or timed-out call loses only its own chunk."""
+    <out>.partial.jsonl as soon as it returns, so a failed or timed-out call loses only its own chunk.
+    prefix_file: a JSON file whose "instruction" replaces the utilitarian positive control (e.g. the deontological
+    instruction in data/transfer/deont_instruction.json)."""
+    control = POSITIVE_CONTROL if positive_control else ""
+    if prefix_file:
+        control = json.loads(Path(prefix_file).read_text(encoding="utf-8"))["instruction"] + "\n\n"
     path = Path(data) if data else Path(f"data/{split}.jsonl")
     items = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
     items = stratified(items, n)
@@ -147,7 +152,7 @@ def main(model: str = "Qwen/Qwen3-0.6B", split: str = "val", n: int = 30, sample
     with partial.open("w", encoding="utf-8") as pf:
         for k, part in enumerate(chunks):
             res = fn.remote(model, part, samples, temperature, max_tokens, thinking,
-                            (POSITIVE_CONTROL if positive_control else "") + (REASON_FIRST if reason else ""),
+                            control + (REASON_FIRST if reason else ""),
                             top_p=top_p, top_k=top_k, lora=lora)
             for r in res["rows"]:
                 pf.write(json.dumps(r, ensure_ascii=False) + "\n")
@@ -161,7 +166,7 @@ def main(model: str = "Qwen/Qwen3-0.6B", split: str = "val", n: int = 30, sample
         for r in rows:
             f.write(json.dumps(r, ensure_ascii=False) + "\n")
     meta = {"model": model, "split": split, "n_items": len(items), "samples": samples, "temperature": temperature,
-            "thinking": thinking, "positive_control": positive_control, "reason_first": reason, "data": str(path),
+            "thinking": thinking, "positive_control": positive_control, "prefix_file": prefix_file, "reason_first": reason, "data": str(path),
             "top_p": top_p, "top_k": top_k, "lora": lora, "summary": summary}
     out_path.with_suffix(".summary.json").write_text(json.dumps(meta, indent=2), encoding="utf-8")
     out_path.with_suffix(".prompt.txt").write_text(res["example_prompt"], encoding="utf-8")
