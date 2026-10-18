@@ -142,3 +142,40 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+
+def joint_bootstrap(units: list[dict], stat, cluster: str = "cluster", stratum: str = "stratum",
+                    n_boot: int = 4000, seed: int = 0) -> dict:
+    """Wave-2 bootstrap (PREREG-wave2.md): ONE resample of cluster ids per draw, stratified, applied to all units.
+
+    units: dicts with a cluster id, a stratum (e.g. violation type) and any fields `stat` reads. Every unit of a
+    drawn cluster (all its cells, rungs, arms and samples) enters the draw together, so paired differences computed
+    inside `stat` stay paired. stat(units) -> float, or None if undefined; undefined draws are counted, not hidden."""
+    rng = random.Random(seed)
+    by_c = defaultdict(list)
+    strata = defaultdict(set)
+    for u in units:
+        by_c[u[cluster]].append(u)
+        strata[u[stratum]].add(u[cluster])
+    strata = {s: sorted(c) for s, c in strata.items()}
+    est = stat(units)
+    draws, undefined = [], 0
+    for _ in range(n_boot):
+        sample = []
+        for cs in strata.values():
+            for _ in cs:
+                sample.extend(by_c[rng.choice(cs)])
+        try:
+            v = stat(sample)
+        except ZeroDivisionError:
+            v = None
+        if v is None:
+            undefined += 1
+        else:
+            draws.append(v)
+    draws.sort()
+    ci = None
+    if draws:
+        ci = [round(draws[int(0.025 * len(draws))], 4), round(draws[max(int(0.975 * len(draws)) - 1, 0)], 4)]
+    return {"est": None if est is None else round(est, 4), "ci95": ci, "undefined_draws": undefined,
+            "n_clusters": len(by_c), "n_units": len(units)}

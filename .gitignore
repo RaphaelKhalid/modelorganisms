@@ -18,3 +18,4 @@ runs/wave2/status.lock
 runs/wave2/status.tmp
 runs/wave2/secrets*
 .wrangler/
+runs/wave2/server.json

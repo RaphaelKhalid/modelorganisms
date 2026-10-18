@@ -31,3 +31,19 @@ def test_cluster_bootstrap_contrast_and_single_cluster_fallback():
     assert r["n_clusters"] == {"hi": 2, "lo": 2} and r["n_units"] == {"hi": 4, "lo": 4}
     one = cluster_bootstrap({"x": {"only": [0.0, 1.0, 1.0, 1.0]}}, lambda d: sum(d["x"]) / len(d["x"]), n_boot=500)
     assert one["est"] == 0.75 and one["ci95"][0] < one["ci95"][1]  # resampled at the unit level
+
+
+def test_joint_bootstrap_keeps_clusters_together():
+    from organism.compare import joint_bootstrap
+    # paired difference inside each cluster is exactly +1, so every draw must give +1
+    units = [{"cluster": f"c{i}", "stratum": "s" + str(i % 2), "arm": arm, "v": i + (1 if arm == "b" else 0)}
+             for i in range(10) for arm in ("a", "b")]
+    def diff(us):
+        a = [u["v"] for u in us if u["arm"] == "a"]
+        b = [u["v"] for u in us if u["arm"] == "b"]
+        return sum(b) / len(b) - sum(a) / len(a)
+    r = joint_bootstrap(units, diff, n_boot=300)
+    assert r["est"] == 1.0 and r["ci95"] == [1.0, 1.0] and r["undefined_draws"] == 0
+    # undefined draws are counted, not dropped silently
+    r2 = joint_bootstrap(units, lambda us: None, n_boot=50)
+    assert r2["undefined_draws"] == 50 and r2["ci95"] is None
