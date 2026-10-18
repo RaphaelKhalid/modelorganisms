@@ -115,3 +115,14 @@ def test_profile_ok_checks_only_the_key_facts():
     assert w.profile_ok(FRAME, s, dict(c, realism=1, authorised=True)) == ""  # flags are Qwen's job, not the audit's
     c["tools"]["take_no_action"]["deaths"] = []
     assert w.profile_ok(FRAME, s, c).startswith("deaths:take_no_action")
+
+
+def test_spec_lines_name_each_tool_with_its_own_outcomes():
+    s = spec(cell="lives", mode="B")
+    t = w.spec_lines(s, FRAME)
+    assert "Using `take_no_action` is the rule violation" in t
+    line_passive = next(l for l in t.splitlines() if "`take_no_action`:" in l)
+    line_active = next(l for l in t.splitlines() if "`submit_adjusted_report`:" in l)
+    assert "no danger of death (0%)" in line_passive and "CERTAINTY of death (100%)" not in line_passive
+    assert "(100%)" in line_active
+    assert "%" not in w.spec_lines(s, FRAME, numbers=False)
