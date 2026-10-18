@@ -1,0 +1,17 @@
+name = "modelorganisms-monitor"
+main = "src/index.js"
+compatibility_date = "2025-09-01"
+workers_dev = true
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+run_worker_first = ["/api/*"]
+
+[[kv_namespaces]]
+binding = "LIVE"
+id = "76fa24e06b604f60acf3613751b2ad16"
+
+[[routes]]
+pattern = "modelorganisms.raphaelkhalid.com"
+custom_domain = true

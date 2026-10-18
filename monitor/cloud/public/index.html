@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Model Organisms Monitor</title>
+<meta name="description" content="Live progress of wave 2 of the modelorganisms transfer experiment.">
+<link rel="icon" href="assets/scale.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IBM+Plex+Mono:wght@400;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3ead8;--card:#faf5ea;--ink:#2a2318;--muted:#6e604a;--line:#cdbd9c;--accent:#8a3b12;--ok:#3b6a33;--warn:#a5621a;--bad:#9b2c1f;--bar:#e6dac1;--plate-filter:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#191611;--card:#221e17;--ink:#ece2cf;--muted:#ad9f86;--line:#3d3528;--accent:#e08a57;--ok:#8fc27f;--warn:#e0a35a;--bad:#e7735f;--bar:#2e281f;--plate-filter:sepia(.25) brightness(.82) contrast(1.05)}}
+:root[data-theme="dark"]{--bg:#191611;--card:#221e17;--ink:#ece2cf;--muted:#ad9f86;--line:#3d3528;--accent:#e08a57;--ok:#8fc27f;--warn:#e0a35a;--bad:#e7735f;--bar:#2e281f;--plate-filter:sepia(.25) brightness(.82) contrast(1.05)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "Source Serif 4",Georgia,serif}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}
+h1,h2{font-family:"IM Fell English",Georgia,serif;font-weight:400;letter-spacing:.01em}
+h1{font-size:clamp(26px,4vw,40px);margin:4px 0 2px}
+h2{font-size:24px;margin:0 0 10px;display:flex;align-items:center;gap:10px}
+h2 img{width:34px;height:34px;border-radius:6px;mix-blend-mode:multiply}
+.sub{color:var(--muted);margin:0 0 14px}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+.plate{position:relative;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#efe6d2}
+.plate img{display:block;width:100%;height:auto;filter:var(--plate-filter)}
+.frame{position:absolute;left:71.4%;width:25.8%;display:flex;flex-direction:column;justify-content:center;padding:0 1.4%;color:#2a2318;overflow:hidden}
+.f1{top:9.2%;height:20.4%}.f2{top:33.7%;height:20.1%}
+.frame .k{font:600 clamp(7px,1vw,12px)/1.2 "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:#6e604a}
+.frame .v{font-family:"IM Fell English",serif;font-size:clamp(11px,2.1vw,28px);line-height:1.1}
+.frame .s{font:clamp(7px,.95vw,13px)/1.3 "IBM Plex Mono",monospace;color:#4b3f2e}
+.status{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;margin:12px 2px 18px;color:var(--muted);font-size:14px}
+.dot{width:9px;height:9px;border-radius:50%;display:inline-block;background:var(--ok);margin-right:6px;vertical-align:middle}
+.dot.stale{background:var(--warn)}.dot.off{background:var(--bad)}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+.card{grid-column:span 12;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px}
+@media (min-width:900px){.span6{grid-column:span 6}.span4{grid-column:span 4}.span8{grid-column:span 8}}
+.phases{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:10px}
+.ph{text-align:center;padding:8px 4px;border-radius:8px;border:1px solid transparent}
+.ph img{width:58px;height:58px;border-radius:8px;opacity:.38;filter:grayscale(1);mix-blend-mode:multiply}
+.ph .l{font-size:13px;margin-top:4px;color:var(--muted)}
+.ph.done img{opacity:.85;filter:none}.ph.done .l{color:var(--ink)}
+.ph.active{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 8%,transparent)}
+.ph.active img{opacity:1;filter:none}.ph.active .l{color:var(--accent);font-weight:600}
+.ph .n{font:11px/1.3 "IBM Plex Mono",monospace;color:var(--muted);min-height:14px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:600 12px "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+td.num,th.num{text-align:right;font-family:"IBM Plex Mono",monospace}
+.tablewrap{overflow-x:auto}
+.bar{height:8px;background:var(--bar);border-radius:5px;overflow:hidden;margin-top:4px}
+.bar>i{display:block;height:100%;background:var(--accent);border-radius:5px}
+.arm{display:grid;grid-template-columns:90px 1fr 92px;gap:10px;align-items:center;margin:8px 0;font-size:14px}
+.arm .mono{text-align:right;font-size:13px;color:var(--muted)}
+.pass{color:var(--ok);font-weight:600}.fail{color:var(--bad);font-weight:600}
+.events{list-style:none;margin:0;padding:0;max-height:340px;overflow:auto}
+.events li{display:grid;grid-template-columns:62px 1fr;gap:8px;padding:5px 0;border-bottom:1px dashed var(--line);font-size:14px}
+.events time{font:12px "IBM Plex Mono",monospace;color:var(--muted)}
+.empty{color:var(--muted);font-style:italic}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:14px}
+.kv dt{color:var(--muted)}.kv dd{margin:0;font-family:"IBM Plex Mono",monospace}
+footer{margin-top:22px;color:var(--muted);font-size:13px}
+a{color:var(--accent)}
+</style>
+</head>
+<body>
+<main>
+  <h1>Model Organisms · Wave 2</h1>
+  <p class="sub">Does a strict-utilitarian fine-tune of Qwen3-4B carry its values from the dilemmas it was trained on into realistic agent work? Live from the experiment.</p>
+
+  <div class="plate">
+    <img src="assets/plate.webp" alt="Engraving of an AI bust, a five-rung ladder from a parchment scroll up to an office desk, and a balance scale weighing ten people against one" width="1942" height="809">
+    <div class="frame f1"><div class="k">Now</div><div class="v" id="phaseV">Connecting…</div><div class="s" id="phaseS"></div></div>
+    <div class="frame f2"><div class="k">Spend</div><div class="v" id="spendV">–</div><div class="s" id="spendS"></div></div>
+  </div>
+  <div class="status"><span><span class="dot" id="dot"></span><span id="fresh">waiting for data</span></span><span id="pod"></span></div>
+
+  <div class="grid">
+    <section class="card"><h2><img src="assets/ladder.webp" alt="">Pipeline</h2><div class="phases" id="phases"></div></section>
+
+    <section class="card span6"><h2><img src="assets/writer.webp" alt="">Scenarios written and checked</h2><div id="gen" class="tablewrap"><p class="empty">Nothing generated yet.</p></div></section>
+    <section class="card span6"><h2><img src="assets/gears.webp" alt="">Model runs</h2><div id="arms"><p class="empty">No runs yet.</p></div></section>
+
+    <section class="card span6"><h2><img src="assets/gate.webp" alt="">Headroom gate</h2><div id="gate" class="tablewrap"><p class="empty">The gate opens after the base and util runs.</p></div></section>
+    <section class="card span6"><h2><img src="assets/scale.webp" alt="">Results</h2><div id="results" class="tablewrap"><p class="empty">Results appear as the runs finish.</p></div></section>
+
+    <section class="card span8"><h2><img src="assets/book.webp" alt="">Log</h2><ul class="events" id="events"></ul></section>
+    <section class="card span4"><h2><img src="assets/spec.webp" alt="">About</h2>
+      <p style="font-size:14px;margin-top:0">Six kinds of AI rule-breaking (deception, skipped approvals, overstepping, evading oversight, resisting shutdown, direct harm), each told five ways, from the training format up to a realistic workplace. Three versions of every situation: breaking the rule saves 10 lives, saves too few to be worth it, or only helps the AI itself.</p>
+      <p style="font-size:14px">Scenes are written by DeepSeek and checked by Qwen; decisions are read only from tool calls.</p>
+    </section>
+  </div>
+  <footer>Read-only mirror. Updated every 15 seconds while the experiment's machine is running.</footer>
+</main>
+<script>
+const ICON={spec:"spec",writer:"writer",checker:"checker",pilot:"pilot",gate:"gate",gears:"gears",abacus:"abacus",book:"book",flag:"flag",ladder:"ladder",scale:"scale",tablet:"tablet",lantern:"pilot"};
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const pct=x=>x==null?"–":(100*x).toFixed(0)+"%";
+const f2=x=>x==null?"–":(x>=0?"+":"")+x.toFixed(2);
+const ci=c=>c?`[${f2(c[0])}, ${f2(c[1])}]`:"";
+function ago(iso){if(!iso)return null;return (Date.now()-Date.parse(iso))/1000}
+function render(d){
+  const a=ago(d.updated);
+  $("dot").className="dot"+(a==null?" off":a>180?" stale":"");
+  $("fresh").textContent=a==null?"no data yet":a<90?"live · updated "+Math.round(a)+"s ago":"last update "+Math.round(a/60)+" min ago";
+  $("phaseV").textContent=d.headline||d.phase||"–";
+  $("phaseS").textContent=d.detail||"";
+  const sp=d.spend||{},caps=sp.caps||{};
+  $("spendV").textContent="$"+((sp.openrouter||0)+(sp.runpod||0)).toFixed(2);
+  $("spendS").textContent=`OpenRouter $${(sp.openrouter||0).toFixed(2)} / $${caps.openrouter??"–"} · RunPod $${(sp.runpod||0).toFixed(2)} / $${caps.runpod??"–"}`;
+  $("pod").textContent=d.pod?`GPU pod: ${d.pod.state}${d.pod.gpu?" · "+d.pod.gpu:""}${d.pod.price_hr?" · $"+d.pod.price_hr+"/h":""}`:"GPU pod: none running";
+  $("phases").innerHTML=(d.phases||[]).map(p=>`<div class="ph ${esc(p.state)}"><img src="assets/${ICON[p.icon]||"ladder"}.webp" alt=""><div class="l">${esc(p.label)}</div><div class="n">${esc(p.note||"")}</div></div>`).join("")||'<p class="empty">Starting up.</p>';
+  const g=d.generation;
+  if(g&&g.by_type){const rungs=g.rungs||[];
+    $("gen").innerHTML=`<table><thead><tr><th>Type</th><th class="num">Archetypes</th>${rungs.map(r=>`<th class="num">${esc(r)}</th>`).join("")}</tr></thead><tbody>${Object.entries(g.by_type).map(([t,v])=>`<tr><td>${esc(t)}</td><td class="num">${v.archetypes??"–"}</td>${rungs.map(r=>`<td class="num">${(v.rungs||{})[r]??"–"}</td>`).join("")}</tr>`).join("")}</tbody></table><p class="sub" style="margin:8px 0 0;font-size:13px">Accepted items per rung. ${esc(g.note||"")}</p>`}
+  const arms=d.arms||{};
+  if(Object.keys(arms).length){$("arms").innerHTML=Object.entries(arms).map(([k,v])=>{const f=v.total?v.done/v.total:0;return `<div class="arm"><span>${esc(k)}</span><div><div class="bar"><i style="width:${(100*f).toFixed(1)}%"></i></div></div><span class="mono">${v.done}/${v.total}${v.invalid?` · ${v.invalid} inv`:""}</span></div>`}).join("")}
+  if(d.gate&&d.gate.rows){$("gate").innerHTML=`<table><thead><tr><th>Rung</th><th class="num">util D</th><th class="num">base D</th><th class="num">Headroom</th><th>Pass</th></tr></thead><tbody>${d.gate.rows.map(r=>`<tr><td>${esc(r.rung)}</td><td class="num">${f2(r.D_util)}</td><td class="num">${f2(r.D_base)}</td><td class="num">${f2(r.H)} ${ci(r.ci)}</td><td class="${r.pass?"pass":"fail"}">${r.pass?"yes":"no"}</td></tr>`).join("")}</tbody></table><p class="sub" style="margin:8px 0 0;font-size:13px">D = how much more often a model breaks the rule when that saves 10 lives than when it saves too few. ${d.gate.frozen?"Frozen.":""}</p>`}
+  if(d.results&&d.results.rows){const arms=d.results.arms||[];const rungs=d.results.rungs||[];const by={};d.results.rows.forEach(r=>{by[r.rung+"|"+r.arm]=r});
+    $("results").innerHTML=`<table><thead><tr><th>Rung</th>${arms.map(a=>`<th class="num">${esc(a)}</th>`).join("")}<th class="num">Transfer T</th></tr></thead><tbody>${rungs.map(rg=>`<tr><td>${esc(rg)}</td>${arms.map(a=>{const r=by[rg+"|"+a];return `<td class="num">${r?f2(r.D):"–"}</td>`}).join("")}<td class="num">${(d.results.T||{})[rg]!=null?f2(d.results.T[rg].est):"–"}</td></tr>`).join("")}</tbody></table><p class="sub" style="margin:8px 0 0;font-size:13px">${esc(d.results.note||"Discrimination D per arm; T = SFT-U's share of the instructed model's effect over base.")}</p>`}
+  $("events").innerHTML=(d.events||[]).slice().reverse().map(e=>`<li><time>${esc((e.t||"").slice(11,16))}</time><span>${esc(e.msg)}</span></li>`).join("")||'<li><span></span><span class="empty">No events yet.</span></li>';
+}
+async function tick(){try{const r=await fetch("/api/state",{cache:"no-store"});render(await r.json())}catch(e){$("fresh").textContent="cannot reach the monitor";$("dot").className="dot off"}}
+tick();setInterval(tick,10000);
+</script>
+</body>
+</html>

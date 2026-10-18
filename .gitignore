@@ -13,3 +13,7 @@ data/transfer/src/
 runs/openrouter/transfer_log.jsonl
 runs/transfer/*.partial.jsonl
 runs/transfer/modal_billing_raw.json
+runs/wave2/cloud_push.json
+runs/wave2/status.lock
+runs/wave2/status.tmp
+runs/wave2/secrets*
