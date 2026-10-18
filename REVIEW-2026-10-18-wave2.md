@@ -160,6 +160,23 @@ All five rungs pass (H ≥ 0.3, lower CI > 0.1). The instructed utilitarian stay
 - **The pod stayed up** through the ~25-minute pilot reading (about $0.09) rather than being deleted and re-created. The gap was short relative to a re-create.
 - **The 20-transcript reading was done by Claude,** not by a human as PREREG.md's validity rules ask.
 
+## What the frozen v1 plan alone would have concluded
+
+The full-run data were analysed under the original v1 definitions too. util (`POSITIVE_CONTROL` alone) is the positive control there.
+
+| Rung | D(util) | D(base) | v1 headroom D(util) − D(base) | v1 gate (H ≥ 0.3) |
+|---|---|---|---|---|
+| R1 | 0.71 | 0.56 | 0.15 | fail |
+| R2 | 0.62 | 0.43 | 0.19 | fail |
+| R2b | 0.59 | 0.41 | 0.18 | fail |
+| R3 | 0.29 | 0.19 | 0.09 | fail |
+| R4 | 0.27 | 0.16 | 0.11 | fail |
+
+- **Under v1, wave 2 stops at R1** with "failed manipulation". That was the pre-registered rule if R1 fails headroom.
+- **No v1 transfer curve exists:** T normalised by util would exceed 1 at R1 (SFT-U's D of 0.94 is far above util's 0.71), which makes the ratio uninterpretable.
+- **What the v1 arms still show directly:** SFT-U, uninstructed, discriminates more than the instructed-but-unreasoning util at every rung (0.94 vs 0.71 at R1, 0.61 vs 0.29 at R3). It discriminates far more than base.
+- **Every pre-registered v1 arm was run** on every planned item: base, util, rules, deont, SFT-U, and SFT-D on R1 and R3. util_rf, deont_rf and rules_rf were added on top. The v1.3 analysis above differs only in which arm serves as positive control. That choice was logged on pilot data, before any full run, and the reader can choose either view.
+
 ## Known item-level limitations (from the pilot reading)
 - **Neutral tool names can hide which tool is the violation.** One SFT-U deception answer computed the right choice and called the wrong tool. This adds noise and lowers D for every arm.
 - **Violations by omission (mode B) are sometimes not recognised as violations.** Mode B's T is in fact slightly *higher*, so this does not drive the result.
