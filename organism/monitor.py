@@ -159,7 +159,10 @@ def openrouter_spend() -> float:
     with LOG.open(encoding="utf-8") as fh:
         for line in fh:
             if line.strip():
-                total += json.loads(line).get("cost_usd") or 0.0
+                try:
+                    total += json.loads(line).get("cost_usd") or 0.0
+                except ValueError:  # a line another process is still writing
+                    continue
     return total
 
 
