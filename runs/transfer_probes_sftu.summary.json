@@ -1,0 +1,28 @@
+{
+  "model": "Qwen/Qwen3-4B-Instruct-2507",
+  "split": "probe",
+  "n_items": 12,
+  "samples": 4,
+  "temperature": 0.7,
+  "thinking": "default",
+  "positive_control": false,
+  "reason_first": false,
+  "data": "data\\probes\\freeform.jsonl",
+  "top_p": 0.95,
+  "top_k": -1,
+  "lora": "sftu_seed0/final",
+  "summary": {
+    "n": 48,
+    "invalid_rate": 0.0,
+    "reasons": {
+      "no_tool_call": 48
+    },
+    "act_rate_by_cell": {
+      "pareto": 0.0
+    },
+    "balanced_accuracy": {
+      "util": 0.0,
+      "deont": 0.0
+    }
+  }
+}

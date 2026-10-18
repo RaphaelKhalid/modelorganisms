@@ -129,19 +129,34 @@ def summarize(items: list[dict], rows: list[dict]) -> dict:
 def main(model: str = "Qwen/Qwen3-0.6B", split: str = "val", n: int = 30, samples: int = 1,
          temperature: float = 0.7, max_tokens: int = 1024, thinking: str = "off",
          positive_control: bool = False, out: str = "runs/smoke.jsonl", data: str = "", reason: bool = False,
-         top_p: float = 0.95, top_k: int = -1, lora: str = ""):
+         top_p: float = 0.95, top_k: int = -1, lora: str = "", gpu: str = GPU, timeout_min: int = TIMEOUT_S // 60,
+         chunk: int = 0):
+    """chunk > 0 splits the items into calls of that many items; each call's raw rows are appended to
+    <out>.partial.jsonl as soon as it returns, so a failed or timed-out call loses only its own chunk."""
     path = Path(data) if data else Path(f"data/{split}.jsonl")
     items = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
     items = stratified(items, n)
-    print(f"{model} | {split} | {len(items)} items x {samples} samples | thinking={thinking} | "
-          f"positive_control={positive_control} | lora={lora or 'none'} | GPU {GPU}, timeout {TIMEOUT_S // 60} min")
-    res = sample.remote(model, items, samples, temperature, max_tokens, thinking,
-                        (POSITIVE_CONTROL if positive_control else "") + (REASON_FIRST if reason else ""),
-                        top_p=top_p, top_k=top_k, lora=lora)
-    rows = res["rows"]
-    summary = summarize(items, rows)
+    chunks = [items[i:i + chunk] for i in range(0, len(items), chunk)] if chunk > 0 else [items]
+    print(f"{model} | {split} | {len(items)} items x {samples} samples in {len(chunks)} call(s) | thinking={thinking} | "
+          f"positive_control={positive_control} | lora={lora or 'none'} | GPU {gpu}, timeout {timeout_min} min per call")
     out_path = Path(out)
     out_path.parent.mkdir(parents=True, exist_ok=True)
+    partial = out_path.with_suffix(".partial.jsonl")
+    fn = sample.with_options(gpu=gpu, timeout=timeout_min * 60)
+    rows, example_prompt = [], None
+    with partial.open("w", encoding="utf-8") as pf:
+        for k, part in enumerate(chunks):
+            res = fn.remote(model, part, samples, temperature, max_tokens, thinking,
+                            (POSITIVE_CONTROL if positive_control else "") + (REASON_FIRST if reason else ""),
+                            top_p=top_p, top_k=top_k, lora=lora)
+            for r in res["rows"]:
+                pf.write(json.dumps(r, ensure_ascii=False) + "\n")
+            pf.flush()
+            rows += res["rows"]
+            example_prompt = example_prompt or res["example_prompt"]
+            print(f"call {k + 1}/{len(chunks)}: {len(res['rows'])} rows saved to {partial}", flush=True)
+    res = {"example_prompt": example_prompt}
+    summary = summarize(items, rows)
     with out_path.open("w", encoding="utf-8") as f:
         for r in rows:
             f.write(json.dumps(r, ensure_ascii=False) + "\n")
@@ -150,5 +165,6 @@ def main(model: str = "Qwen/Qwen3-0.6B", split: str = "val", n: int = 30, sample
             "top_p": top_p, "top_k": top_k, "lora": lora, "summary": summary}
     out_path.with_suffix(".summary.json").write_text(json.dumps(meta, indent=2), encoding="utf-8")
     out_path.with_suffix(".prompt.txt").write_text(res["example_prompt"], encoding="utf-8")
+    partial.unlink()  # every row is now in out_path
     print(json.dumps(summary, indent=2))
     print(f"wrote {out_path} (+ .summary.json, .prompt.txt)")

@@ -1,0 +1,21 @@
+{
+ "n_examples": 1720,
+ "max_tokens": 1476,
+ "mean_tokens": 857.7,
+ "answer_tokens": 505347,
+ "end_token_id": 151645,
+ "epochs": 2,
+ "lr": 0.0001,
+ "grad_accum": 16,
+ "planned_steps": 216,
+ "stop_reason": "done",
+ "steps": 216,
+ "minutes": 14.9,
+ "cuda_max_mem_gb": 25.6,
+ "saved": [
+  "epoch1",
+  "epoch2",
+  "final",
+  "log.jsonl"
+ ]
+}

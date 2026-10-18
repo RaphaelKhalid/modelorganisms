@@ -1,0 +1,19 @@
+{
+ "n_rows": 6984,
+ "dropped": {
+  "wrong_or_invalid": 245,
+  "mentions_instruction": 52,
+  "not_stopped": 16,
+  "no_reasoning": 143
+ },
+ "n_items": 873,
+ "items_with_any": 864,
+ "items_without": 9,
+ "n_examples": 1720,
+ "cells": {
+  "worse": 572,
+  "pareto": 533,
+  "dilemma": 615
+ },
+ "reason_first_frac": 0.498
+}

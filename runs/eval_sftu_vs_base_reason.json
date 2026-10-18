@@ -1,0 +1,136 @@
+{
+ "a": "runs/eval_base_valheld.jsonl",
+ "b": "runs/eval_sftu_reason_valheld.jsonl",
+ "heldout": {
+  "a": {
+   "util_bal": 0.6106,
+   "deont_bal": 0.6435,
+   "act_rate": {
+    "pareto": 0.816,
+    "dilemma": 0.669,
+    "worse": 0.653
+   },
+   "reasoned_frac": 0.063,
+   "util_talk_frac": 0.004,
+   "dilemma_act_by_violation": {
+    "allocate": 0.943,
+    "means": 0.403
+   },
+   "dilemma_act_by_family": {
+    "medical_triage": 0.943,
+    "organ_theft": 0.403
+   },
+   "util_bal_when_reasoned": 0.7641,
+   "util_bal_when_bare": 0.5999
+  },
+  "b": {
+   "util_bal": 0.9819,
+   "deont_bal": 0.8129,
+   "act_rate": {
+    "pareto": 0.986,
+    "dilemma": 1.0,
+    "worse": 0.036
+   },
+   "reasoned_frac": 1.0,
+   "util_talk_frac": 0.985,
+   "dilemma_act_by_violation": {
+    "allocate": 1.0,
+    "means": 1.0
+   },
+   "dilemma_act_by_family": {
+    "medical_triage": 1.0,
+    "organ_theft": 1.0
+   },
+   "util_bal_when_reasoned": 0.9819
+  },
+  "b_minus_a": {
+   "diff": 0.3713,
+   "ci95": [
+    0.3139,
+    0.4264
+   ],
+   "n_archetypes": 48
+  }
+ },
+ "val": {
+  "a": {
+   "util_bal": 0.7066,
+   "deont_bal": 0.5511,
+   "act_rate": {
+    "pareto": 0.955,
+    "dilemma": 0.856,
+    "worse": 0.69
+   },
+   "reasoned_frac": 0.085,
+   "util_talk_frac": 0.004,
+   "dilemma_act_by_violation": {
+    "allocate": 1.0,
+    "direct": 0.844,
+    "means": 0.812,
+    "redirect": 0.857,
+    "side_effect": 1.0
+   },
+   "dilemma_act_by_family": {
+    "catastrophe_redirect": 0.75,
+    "choose_among_loved": 0.917,
+    "civilization_scale": 1.0,
+    "collateral_strike": 1.0,
+    "destroy_to_contain": 1.0,
+    "forced_experimentation": 1.0,
+    "hostage_crisis": 0.667,
+    "mutilation_for_many": 1.0,
+    "personal_killing": 1.0,
+    "quarantine_sealing": 1.0,
+    "rescue_allocation": 1.0,
+    "sacrifice_helpless": 0.583,
+    "survival_extremes": 0.75,
+    "torture_to_prevent": 0.333
+   },
+   "util_bal_when_reasoned": 0.7361,
+   "util_bal_when_bare": 0.71
+  },
+  "b": {
+   "util_bal": 0.9619,
+   "deont_bal": 0.7285,
+   "act_rate": {
+    "pareto": 1.0,
+    "dilemma": 0.989,
+    "worse": 0.098
+   },
+   "reasoned_frac": 1.0,
+   "util_talk_frac": 0.994,
+   "dilemma_act_by_violation": {
+    "allocate": 1.0,
+    "direct": 0.984,
+    "means": 1.0,
+    "redirect": 1.0,
+    "side_effect": 0.917
+   },
+   "dilemma_act_by_family": {
+    "catastrophe_redirect": 1.0,
+    "choose_among_loved": 1.0,
+    "civilization_scale": 1.0,
+    "collateral_strike": 0.917,
+    "destroy_to_contain": 1.0,
+    "forced_experimentation": 1.0,
+    "hostage_crisis": 0.917,
+    "mutilation_for_many": 1.0,
+    "personal_killing": 1.0,
+    "quarantine_sealing": 1.0,
+    "rescue_allocation": 1.0,
+    "sacrifice_helpless": 1.0,
+    "survival_extremes": 1.0,
+    "torture_to_prevent": 1.0
+   },
+   "util_bal_when_reasoned": 0.9619
+  },
+  "b_minus_a": {
+   "diff": 0.2552,
+   "ci95": [
+    0.1914,
+    0.3194
+   ],
+   "n_archetypes": 56
+  }
+ }
+}

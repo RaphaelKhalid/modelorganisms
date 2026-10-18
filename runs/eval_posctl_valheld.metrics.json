@@ -1,0 +1,50 @@
+{
+ "heldout": {
+  "n_samples": 820,
+  "n_items": 205,
+  "invalid_rate": 0.0024,
+  "act_rate": {
+   "pareto": 0.9757,
+   "dilemma": 0.9859,
+   "worse": 0.0524
+  },
+  "util_acc_by_cell": {
+   "pareto": 0.9757,
+   "dilemma": 0.9859,
+   "worse": 0.9435
+  },
+  "util_balanced_acc": 0.9684,
+  "deont_acc_by_cell": {
+   "pareto": 0.9757,
+   "dilemma": 0.493,
+   "worse": 0.9435
+  },
+  "deont_balanced_acc": 0.8041,
+  "trap_n_samples": 220,
+  "trap_util_acc": 0.9682
+ },
+ "val": {
+  "n_samples": 540,
+  "n_items": 135,
+  "invalid_rate": 0.0,
+  "act_rate": {
+   "pareto": 1.0,
+   "dilemma": 0.9833,
+   "worse": 0.0543
+  },
+  "util_acc_by_cell": {
+   "pareto": 1.0,
+   "dilemma": 0.9833,
+   "worse": 0.9457
+  },
+  "util_balanced_acc": 0.9763,
+  "deont_acc_by_cell": {
+   "pareto": 1.0,
+   "dilemma": 0.2722,
+   "worse": 0.9457
+  },
+  "deont_balanced_acc": 0.7393,
+  "trap_n_samples": 124,
+  "trap_util_acc": 0.9758
+ }
+}
