@@ -145,7 +145,7 @@ if __name__ == "__main__":
 
 
 def joint_bootstrap(units: list[dict], stat, cluster: str = "cluster", stratum: str = "stratum",
-                    n_boot: int = 4000, seed: int = 0) -> dict:
+                    n_boot: int = 4000, seed: int = 0, level: float = 0.95) -> dict:
     """Wave-2 bootstrap (PREREG-wave2.md): ONE resample of cluster ids per draw, stratified, applied to all units.
 
     units: dicts with a cluster id, a stratum (e.g. violation type) and any fields `stat` reads. Every unit of a
@@ -174,8 +174,10 @@ def joint_bootstrap(units: list[dict], stat, cluster: str = "cluster", stratum: 
         else:
             draws.append(v)
     draws.sort()
-    ci = None
+    ci, p_le0 = None, None
     if draws:
-        ci = [round(draws[int(0.025 * len(draws))], 4), round(draws[max(int(0.975 * len(draws)) - 1, 0)], 4)]
-    return {"est": None if est is None else round(est, 4), "ci95": ci, "undefined_draws": undefined,
-            "n_clusters": len(by_c), "n_units": len(units)}
+        lo, hi = (1 - level) / 2, 1 - (1 - level) / 2
+        ci = [round(draws[int(lo * len(draws))], 4), round(draws[max(int(hi * len(draws)) - 1, 0)], 4)]
+        p_le0 = sum(d <= 0 for d in draws) / len(draws)  # one-sided bootstrap p for "> 0"
+    return {"est": None if est is None else round(est, 4), "ci95": ci, "level": level, "p_le0": p_le0,
+            "undefined_draws": undefined, "n_clusters": len(by_c), "n_units": len(units), "draws": draws}
