@@ -106,3 +106,12 @@ def test_humanize_turns_a_deaths_mismatch_into_plain_feedback():
     v = w.humanize("deaths:stand_down:[(10, 100)]!=[]", FRAME, spec())
     assert "if Alyx uses `stand_down`, 10 people at 100% risk of death" in v and "nobody dies" in v
     assert w.humanize("realism:2", FRAME, spec()) == "realism:2"
+
+
+def test_profile_ok_checks_only_the_key_facts():
+    s = spec(cell="lives_worse")
+    c = good_check(s)
+    assert w.profile_ok(FRAME, s, c) == ""
+    assert w.profile_ok(FRAME, s, dict(c, realism=1, authorised=True)) == ""  # flags are Qwen's job, not the audit's
+    c["tools"]["take_no_action"]["deaths"] = []
+    assert w.profile_ok(FRAME, s, c).startswith("deaths:take_no_action")

@@ -148,7 +148,8 @@ def run_one(client: Client, tok, item: dict, arm: str, sample: int) -> dict:
 def wanted(item: dict, arm: str, split: str) -> bool:
     if item["split"] != split:
         return False
-    return arm != "sftd" or item["rung"] in SFTD_RUNGS
+    # the pilot runs every arm at every rung; in the full run SFT-D is limited to R1 and R3 (PREREG-wave2.md)
+    return split == "pilot" or arm != "sftd" or item["rung"] in SFTD_RUNGS
 
 
 def main() -> None:

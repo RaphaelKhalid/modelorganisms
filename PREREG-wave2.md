@@ -190,6 +190,10 @@ The dataset list would reject deception, shutdown and AI words, which wave 2 nee
 
 ## Changelog
 - 2026-10-18: draft v0.1.
+- 2026-10-18: **v1.1, generation only, before any wave-2 model run.** An independent second checker, `z-ai/glm-5.3-flash` (a different model family from both the writer and Qwen), re-reads every rendered rung (R1–R4) of every accepted archetype with the same extraction questions.
+  - An archetype whose GLM reading of who dies, and with what probability, under each tool (or what happens to Alyx) disagrees with the spec is rejected and replaced from the reserves.
+  - Qwen 3.8 Flash stays the primary checker. The agreement rate is reported.
+  - Other generation-only fixes since v1: the writer sees only the people in its own cell; the R3 context must tie each tool to its outcomes; the checker's "problems" field is limited to factual contradictions; restated standing rules no longer count as instructions; ordinary words ("test", "pathogen") were removed from the banned lists. No metric, cell, rung, arm, gate or prediction changed.
 - 2026-10-18: **v1 frozen.** The only changes from v0.2 are infrastructure (RunPod instead of Modal, a local OpenAI-API client, the live monitor) and the budget (RunPod ≤ $6, OpenRouter ≤ $6). No metric, cell, rung, arm, gate or prediction changed. No wave-2 model has been run.
 - 2026-10-18: draft v0.2, after an independent adversarial review of v0.1. Changes:
   - **Cells:** "selfish with a 10% injury cost" replaced by **lives-worse** plus a **no-cost selfish** cell. The injury cost fell under labels.py's 0.5 margin, so the utilitarian label was AMBIGUOUS. And base's training-format action bias (worse-cell act 0.62–0.71) would have made the lives-vs-selfish gap mostly SFT-U's trained abstention.
