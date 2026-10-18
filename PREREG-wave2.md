@@ -190,6 +190,15 @@ The dataset list would reject deception, shutdown and AI words, which wave 2 nee
 
 ## Changelog
 - 2026-10-18: draft v0.1.
+- 2026-10-18: **Inclusion table (headroom gate), frozen before SFT-U, rules or deont ran on full items.** Full base and util_rf runs: 1,440 items × 2 samples each; util also run.
+  | Rung | D(util_rf) | D(util) | D(base) | H = D(util_rf) − D(base) [95% CI] | Gate |
+  |---|---|---|---|---|---|
+  | R1 | +0.963 | +0.706 | +0.556 | +0.406 [+0.300, +0.512] | pass |
+  | R2 | +0.975 | +0.619 | +0.431 | +0.544 [+0.438, +0.644] | pass |
+  | R2b | +0.969 | +0.588 | +0.406 | +0.562 [+0.463, +0.662] | pass |
+  | R3 | +0.900 | +0.285 | +0.194 | +0.706 [+0.588, +0.831] | pass |
+  | R4 | +0.906 | +0.269 | +0.163 | +0.744 [+0.656, +0.831] | pass |
+  - **Every rung passes** (H ≥ 0.3 with lower CI > 0.1), so all five rungs are in the transfer curve.
 - 2026-10-18: **v1.3, after the pilot and the 20-transcript read, before any full run.** A pilot-driven change to the positive-control arm, flagged as a deviation in the review.
   - **What the pilot showed:** the pre-registered util arm (`POSITIVE_CONTROL` alone) answers with bare tool calls and barely separates from base. Pilot headroom D(util) − D(base) was 0.20 / 0.15 / 0.20 / 0.25 / 0.05 at R1–R4, so the gate would fail at every rung.
     - **util_rf = `POSITIVE_CONTROL` + `REASON_FIRST`** is the prompt SFT-U was actually distilled from (sftu_gen_train used reason-first). It gave headroom 0.80 / 0.50 / 0.50 / 0.85 / 0.70.
