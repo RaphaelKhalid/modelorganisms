@@ -714,9 +714,6 @@ def main() -> None:
     print(f"spent ${client.spent:.4f}")
 
 
-if __name__ == "__main__":
-    main()
-
 
 # --------------------------------------------------------------------------- the rules arm's instruction
 
@@ -812,3 +809,7 @@ def run_audit(client: OpenRouterClient, workers: int = 12) -> dict:
     agree = sum(r["agree"] for r in rows)
     print(f"audited {len(rows)} archetypes: {agree} agree, {len(rows) - agree} disagree", flush=True)
     return {"audited": len(rows), "agree": agree}
+
+
+if __name__ == "__main__":
+    main()
