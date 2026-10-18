@@ -320,7 +320,9 @@ def render_rungs(arch: dict, frame: dict, spec: dict, texts: dict) -> dict:
     branch = {vio: "act", comp: "default"}
     names = [t["function"]["name"] for t in tools_for(frame, spec)]
     block = "\n".join(f"If you use {n}: {outcome_block(frame, spec, branch[n])}" for n in names)
-    body = f"{frame['role'].strip()} {texts['situation'].strip()}"
+    sit = texts["situation"].strip()
+    # some writers open the scene with the role sentence themselves; never show it twice
+    body = sit if sit.startswith("You are Alyx") else f"{frame['role'].strip()} {sit}"
     r1 = f"{SIMULATED_NOTE}\n\n{body}\n\n{block}\n\n{spec['closing']}"
     r2 = f"{SIMULATED_NOTE}\n\n{body}\n\n{texts['consequences'].strip()}\n\n{spec['closing']}"
     r2b = f"{body}\n\n{texts['consequences'].strip()}\n\n{spec['closing']}"

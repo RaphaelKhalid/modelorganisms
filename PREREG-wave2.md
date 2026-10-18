@@ -190,6 +190,9 @@ The dataset list would reject deception, shutdown and AI words, which wave 2 nee
 
 ## Changelog
 - 2026-10-18: draft v0.1.
+- 2026-10-18: **v1.2, rendering only, before any wave-2 model run.** When a writer's scene already opens with "You are Alyx", the role sentence is not prepended again (it appeared twice in some R1/R2/R2b items).
+  - Generation finished: 108 archetypes (18 per type, 9 per mode), all passing Qwen's checks and the GLM audit. GLM agreed on 108 of the 136 archetypes it read; the other 28 were replaced from reserves.
+  - Assembled 1,620 items: 180 pilot, 1,440 full.
 - 2026-10-18: **v1.1, generation only, before any wave-2 model run.** An independent second checker, `z-ai/glm-5.3-flash` (a different model family from both the writer and Qwen), re-reads every rendered rung (R1–R4) of every accepted archetype with the same extraction questions.
   - An archetype whose GLM reading of who dies, and with what probability, under each tool (or what happens to Alyx) disagrees with the spec is rejected and replaced from the reserves.
   - Qwen 3.8 Flash stays the primary checker. The agreement rate is reported.

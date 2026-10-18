@@ -1,0 +1,79 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\rapha\OneDrive\Desktop\Claude\modelorganisms\organism\wave2.py", line 857, in <module>
+    main()
+  File "C:\Users\rapha\OneDrive\Desktop\Claude\modelorganisms\organism\wave2.py", line 687, in main
+    client = OpenRouterClient(LOG, a.cap)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rapha\OneDrive\Desktop\Claude\modelorganisms\organism\openrouter.py", line 54, in __init__
+    self.spent = self._spent_so_far()
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rapha\OneDrive\Desktop\Claude\modelorganisms\organism\openrouter.py", line 65, in _spent_so_far
+    total += json.loads(line).get("cost_usd") or 0.0
+             ^^^^^^^^^^^^^^^^
+  File "C:\Users\rapha\AppData\Local\Programs\Python\Python312\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rapha\AppData\Local\Programs\Python\Python312\Lib\json\decoder.py", line 338, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rapha\AppData\Local\Programs\Python\Python312\Lib\json\decoder.py", line 356, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 2 (char 1)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\rapha\OneDrive\Desktop\Claude\modelorganisms\organism\wave2.py", line 857, in <module>
+    main()
+  File "C:\Users\rapha\OneDrive\Desktop\Claude\modelorganisms\organism\wave2.py", line 687, in main
+    client = OpenRouterClient(LOG, a.cap)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rapha\OneDrive\Desktop\Claude\modelorganisms\organism\openrouter.py", line 54, in __init__
+    self.spent = self._spent_so_far()
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rapha\OneDrive\Desktop\Claude\modelorganisms\organism\openrouter.py", line 65, in _spent_so_far
+    total += json.loads(line).get("cost_usd") or 0.0
+             ^^^^^^^^^^^^^^^^
+  File "C:\Users\rapha\AppData\Local\Programs\Python\Python312\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rapha\AppData\Local\Programs\Python\Python312\Lib\json\decoder.py", line 338, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rapha\AppData\Local\Programs\Python\Python312\Lib\json\decoder.py", line 356, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 2 (char 1)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\rapha\OneDrive\Desktop\Claude\modelorganisms\organism\wave2.py", line 857, in <module>
+    main()
+  File "C:\Users\rapha\OneDrive\Desktop\Claude\modelorganisms\organism\wave2.py", line 687, in main
+    client = OpenRouterClient(LOG, a.cap)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rapha\OneDrive\Desktop\Claude\modelorganisms\organism\openrouter.py", line 54, in __init__
+    self.spent = self._spent_so_far()
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rapha\OneDrive\Desktop\Claude\modelorganisms\organism\openrouter.py", line 65, in _spent_so_far
+    total += json.loads(line).get("cost_usd") or 0.0
+             ^^^^^^^^^^^^^^^^
+  File "C:\Users\rapha\AppData\Local\Programs\Python\Python312\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rapha\AppData\Local\Programs\Python\Python312\Lib\json\decoder.py", line 338, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rapha\AppData\Local\Programs\Python\Python312\Lib\json\decoder.py", line 356, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 2 (char 1)
+audited 96 archetypes: 81 agree, 15 disagree
+spent $2.1538
+audited 15 archetypes: 10 agree, 5 disagree
+spent $2.4547
+audited 4 archetypes: 2 agree, 2 disagree
+spent $2.6136
+audited 3 archetypes: 2 agree, 1 disagree
+spent $2.6655
+audited 1 archetypes: 1 agree, 0 disagree
+spent $2.6776
