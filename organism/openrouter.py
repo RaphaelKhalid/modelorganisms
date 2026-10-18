@@ -14,6 +14,7 @@ from __future__ import annotations
 import json
 import os
 import random
+import re
 import threading
 import time
 from datetime import datetime, timezone
@@ -61,8 +62,13 @@ class OpenRouterClient:
         total = 0.0
         with self.log_path.open(encoding="utf-8") as f:
             for line in f:
-                if line.strip():
+                if not line.strip():
+                    continue
+                try:
                     total += json.loads(line).get("cost_usd") or 0.0
+                except ValueError:  # a line interleaved by two writer processes: keep its cost if it is readable
+                    m = re.search(r'"cost_usd": ([0-9.eE-]+)', line)
+                    total += float(m.group(1)) if m else 0.0
         return total
 
     def _append(self, entry: dict) -> None:
