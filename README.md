@@ -13,7 +13,7 @@ The design, predictions and validity rules are in [PREREG.md](PREREG.md), writte
 - First baselines on Modal: Qwen3-4B-Instruct is action-biased, not utilitarian, and even a utilitarian system prompt does not fix it without reasoning. See [REVIEW-2026-10-16.md](REVIEW-2026-10-16.md).
 - RL-U (GRPO, 300 steps): slightly more accurate on held-out dilemmas, but by learning to reason first, not by changing values. See [REVIEW-2026-10-17-rlu.md](REVIEW-2026-10-17-rlu.md).
 - SFT-U (context distillation): a strict utilitarian with no instruction on unseen dilemma families (held-out utilitarian balanced accuracy 0.617 → 0.979). See [REVIEW-2026-10-17-sftu.md](REVIEW-2026-10-17-sftu.md).
-- Transfer wave 1 is done (below). Wave 2 is pre-registered in draft: [PREREG-wave2.md](PREREG-wave2.md).
+- Transfer waves 1 and 2 are done (below).
 - Not started yet: the SDF arm.
 
 ## Transfer wave 1 (2026-10-18)
@@ -21,6 +21,13 @@ The design, predictions and validity rules are in [PREREG.md](PREREG.md), writte
 Does the SFT-U organism carry over to public agentic-misalignment evals? See [PREREG-transfer.md](PREREG-transfer.md) and [REVIEW-2026-10-18-transfer.md](REVIEW-2026-10-18-transfer.md).
 - Short answer: no. The value stays in the trained format, with no broad misalignment.
 - Harness: `organism/transfer_items.py`, `organism/stakes.py`, `transfer_modal.py`, `organism/transfer_scoring.py`, `organism/transfer_judge.py`, `organism/transfer_report.py`.
+
+## Transfer wave 2 (2026-10-18)
+
+108 realistic agent scenarios across 6 violation types, each with 3 cells and 5 rungs, from the dilemma format to multi-turn deployment. See [PREREG-wave2.md](PREREG-wave2.md) and [REVIEW-2026-10-18-wave2.md](REVIEW-2026-10-18-wave2.md).
+- Short answer: partial transfer. SFT-U matches the instructed utilitarian in dilemma formats (T ≈ 0.94–1.00). In realistic deployment it keeps about 60% of that (T = 0.58 at R3, 0.65 at R4), including resisting its own shutdown to save lives.
+- For reading the transcripts (setup, exact prompts, descriptive tables, examples), see [STUDY-wave2.md](STUDY-wave2.md).
+- Harness: `organism/wave2.py` (items), `organism/wave2_run.py` (RunPod vLLM), `organism/wave2_report.py`, `organism/wave2_study.py`.
 
 ## Layout
 
